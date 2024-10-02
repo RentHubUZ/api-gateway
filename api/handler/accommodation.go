@@ -6,7 +6,7 @@ import (
 	"strconv"
 
 	pbaccom "api_gateway/genproto/accommodation"
-	"api_gateway/models"
+	"api_gateway/internal/models"
 
 	"github.com/gin-gonic/gin"
 )

@@ -1,0 +1,9 @@
+p, user, /users/*, GET
+p, user, /users/*, PUT
+p, user, /users/*, DELETE
+p, user, /users/*, POST
+
+p, user, /tweets/*, GET
+p, user, /tweets/*, PUT
+p, user, /tweets/*, DELETE
+p, user, /tweets/*, POST

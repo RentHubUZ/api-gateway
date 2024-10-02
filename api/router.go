@@ -2,7 +2,7 @@ package api
 
 import (
 	"api_gateway/api/handler"
-	"api_gateway/config"
+	"api_gateway/internal/config"
 	"log/slog"
 
 	"github.com/gin-gonic/gin"
