@@ -87,7 +87,7 @@ func (s *serviceManagerImpl) RequestService() request.RequestServiceClient {
 
 
 func NewServiceManager() (ServiceManager, error) {
-	connUser, err := grpc.Dial(
+	connUser, err := grpc.NewClient(
 		config.Load().USER_SERVICE,
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 	)
@@ -95,7 +95,7 @@ func NewServiceManager() (ServiceManager, error) {
 		return nil, err
 	}
 
-	connAccom, err := grpc.Dial(
+	connAccom, err := grpc.NewClient(
 		config.Load().ACCOMMODATION_SERVICE,
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 	)
@@ -103,7 +103,7 @@ func NewServiceManager() (ServiceManager, error) {
 		return nil, err
 	}
 
-	connAction, err := grpc.Dial(
+	connAction, err := grpc.NewClient(
 		config.Load().ACTION_BOARD,
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 	)
