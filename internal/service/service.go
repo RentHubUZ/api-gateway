@@ -7,7 +7,7 @@ import (
 	"api_gateway/genproto/payment"
 	"api_gateway/genproto/reviews"
 	"api_gateway/genproto/tariff"
-	"api_gateway/genproto/top-properties"
+	"api_gateway/genproto/top_properties"
 	"api_gateway/genproto/user"
 	"api_gateway/genproto/notification"
 	"api_gateway/genproto/request"

@@ -6,7 +6,7 @@ import (
 	pbpay "api_gateway/genproto/payment"
 	pbrev "api_gateway/genproto/reviews"
 	pbtarf "api_gateway/genproto/tariff"
-	pbtop "api_gateway/genproto/top-properties"
+	pbtop "api_gateway/genproto/top_properties"
 	pbuser "api_gateway/genproto/user"
 	"log/slog"
 )
