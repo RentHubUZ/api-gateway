@@ -20,7 +20,7 @@ import (
 
 type Handler struct {
 	UserService          pbuser.UserClient
-	FavoriteService      pbfav.FavoritesClient
+	FavouriteService     pbfav.FavoritesClient
 	ReviewService        pbrev.ReviewsClient
 	TarifService         pbtarf.TariffServiceClient
 	PaymentService       pbpay.PaymentServiceClient
@@ -35,7 +35,7 @@ type Handler struct {
 func NewHandler(service service.ServiceManager, logs *slog.Logger) *Handler {
 	return &Handler{
 		UserService:          service.UserService(),
-		FavoriteService:      service.FavoriteService(),
+		FavouriteService:     service.FavouriteService(),
 		ReviewService:        service.ReviewService(),
 		TarifService:         service.TarifService(),
 		PaymentService:       service.PaymentService(),
