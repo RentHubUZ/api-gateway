@@ -2,25 +2,28 @@ package handler
 
 import (
 	pb "api_gateway/genproto/reviews"
-	"api_gateway/api/token"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
+// CreateReview godoc
+// @Summary      Create a new review
+// @Description  Create a new review with specified details
+// @Tags         reviews
+// @Accept       json
+// @Produce      json
+// @Security     ApiKeyAuth
+// @Param        body body pb.CreateReviewReq true "Create Review Request"
+// @Success      200 {object} pb.CreateReviewRes
+// @Failure      400 {object} string
+// @Router       /review/createreview [post]
 func (h *Handler) CreateReview(c *gin.Context) {
-	claims, err := token.ExtractClaims(c)
+	userID, err := getUserID(c)
 	if err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": err})
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-
-	userID, ok := claims["user_id"].(string)
-	if !ok {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "cannot get user id"})
-		return
-	}
-
 	var req pb.CreateReviewReq
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -36,3 +39,11 @@ func (h *Handler) CreateReview(c *gin.Context) {
 	c.JSON(http.StatusCreated, res)
 
 }
+
+func (h *Handler) GetAllReviews(c *gin.Context) {}
+
+func (h *Handler) GetReviewById(c *gin.Context) {}
+
+func (h *Handler) UpdateReview(c *gin.Context) {}
+
+func (h *Handler) DeleteReview(c *gin.Context) {}

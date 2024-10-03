@@ -27,11 +27,21 @@ func (c *casbinPermission) GetRole(ctx *gin.Context) (string, int) {
 		return "2.unauthorized", http.StatusUnauthorized
 	}
 
-	role, ok := claims["user_role"].(string)
+	role, ok := claims["role"].(string)
 	if !ok {
 		fmt.Println(err)
 		return "3.unauthorized", http.StatusUnauthorized
 	}
+
+	userID, ok := claims["user_id"].(string)
+	if !ok {
+		fmt.Println(err)
+		return "4.unauthorized", http.StatusUnauthorized
+	}
+
+	ctx.Set("user_id", userID)
+	ctx.Set("role", role)
+
 	return role, 0
 }
 

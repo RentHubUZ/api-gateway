@@ -36,3 +36,16 @@ type UpdateProperties struct {
 	Latitude       float64  `json:"latitude"`
 	Longitude      float64  `json:"longitude"`
 }
+
+type Top_Properties struct {
+	Property_id string `json:"property_id"`
+	Tariff_name string `json:"tariff_name"`
+}
+
+type Top_UpdateProperties struct {
+	Id string `json:"id"`
+	Property_id string `json:"property_id"`
+	Start_date string `json:"start_date"`
+	End_date string `json:"end_date"`
+	Tariff_name string `json:"tariff_name"`
+}

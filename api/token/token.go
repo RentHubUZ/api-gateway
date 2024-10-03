@@ -37,20 +37,3 @@ func ExtractClaims(tokenstr string) (jwt.MapClaims, error) {
 	}
 	return claims, nil
 }
-
-func GetUserInfoFromAccessToken(accessTokenString string) (string, string, string, string, error) {
-	refreshToken, err := jwt.Parse(accessTokenString, func(token *jwt.Token) (interface{}, error) { return []byte(config.Load().SIGNING_KEY), nil })
-	if err != nil || !refreshToken.Valid {
-		return "", "", "", "", err
-	}
-	claims, ok := refreshToken.Claims.(jwt.MapClaims)
-	if !ok {
-		return "", "", "", "", err
-	}
-	userID := claims["user_id"].(string)
-	email := claims["email"].(string)
-	password := claims["password"].(string)
-	role := claims["role"].(string)
-
-	return userID, email, password, role, nil
-}

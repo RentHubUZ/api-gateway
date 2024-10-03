@@ -11,6 +11,18 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// CreateHouse godoc
+// @Summary      Create a new house
+// @Description  Create a new house with specified properties
+// @Tags         houses
+// @Accept       json
+// @Produce      json
+// @Security     ApiKeyAuth
+// @Param        body body models.CreateProperties true "Create House Request"
+// @Success      202 {object} accommodation.CreateHouseRes
+// @Failure      400 {object} string
+// @Failure      500 {object} string
+// @Router       /api/properties/propertiescreate [post]
 func (h *Handler) CreateHouse(c *gin.Context) {
 	userId, exists := c.Get("user_id")
 	if !exists {
@@ -56,6 +68,18 @@ func (h *Handler) CreateHouse(c *gin.Context) {
 	c.JSON(http.StatusAccepted, resp)
 }
 
+// UpdateHouse godoc
+// @Summary      Update an existing house
+// @Description  Update an existing house with new details
+// @Tags         houses
+// @Accept       json
+// @Produce      json
+// @Security     ApiKeyAuth
+// @Param        body body models.UpdateProperties true "Update House Request"
+// @Success      202 {object} accommodation.UpdateHouseRes
+// @Failure      400 {object} string
+// @Failure      500 {object} string
+// @Router       /api/properties/propertiesupdate [put]
 func (h *Handler) UpdateHouse(c *gin.Context) {
 	userId, exists := c.Get("user_id")
 	if !exists {
@@ -102,6 +126,19 @@ func (h *Handler) UpdateHouse(c *gin.Context) {
 	c.JSON(http.StatusAccepted, resp)
 }
 
+// GetAllHouse godoc
+// @Summary      Get all houses
+// @Description  Retrieve a list of all houses with pagination
+// @Tags         houses
+// @Accept       json
+// @Produce      json
+// @Security     ApiKeyAuth
+// @Param        limit path int true "Limit"
+// @Param        page  path int true "Page"
+// @Success      202 {object} accommodation.GetAllHouseRes
+// @Failure      400 {object} string
+// @Failure      500 {object} string
+// @Router       /api/properties/propertiesgetall/{limit}/{page} [get]
 func (h *Handler) GetAllHouse(c *gin.Context) {
 	limitStr := c.Param("limit")
 	limit, err := strconv.Atoi(limitStr)
@@ -135,6 +172,17 @@ func (h *Handler) GetAllHouse(c *gin.Context) {
 	c.JSON(http.StatusAccepted, resp)
 }
 
+// GetByIdHouse godoc
+// @Summary      Get house by ID
+// @Description  Retrieve house information by ID
+// @Tags         houses
+// @Accept       json
+// @Produce      json
+// @Security     ApiKeyAuth
+// @Param        properties_id path string true "Property ID"
+// @Success      202 {object} accommodation.GetByIdHouseRes
+// @Failure      500 {object} string
+// @Router       /api/properties/propertiesgetbyid/{properties_id} [get]
 func (h *Handler) GetByIdHouse(c *gin.Context) {
 	id := c.Param("properties_id")
 
@@ -152,6 +200,17 @@ func (h *Handler) GetByIdHouse(c *gin.Context) {
 	c.JSON(http.StatusAccepted, resp)
 }
 
+// DeleteHouse godoc
+// @Summary      Delete a house
+// @Description  Delete a house by ID
+// @Tags         houses
+// @Accept       json
+// @Produce      json
+// @Security     ApiKeyAuth
+// @Param        properties_id path string true "Property ID"
+// @Success      202 {object} accommodation.DeleteHouseRes
+// @Failure      500 {object} string
+// @Router       /api/properties/propertiesdelete/{properties_id} [delete]
 func (h *Handler) DeleteHouse(c *gin.Context) {
 	id := c.Param("properties_id")
 

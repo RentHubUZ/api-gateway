@@ -9,10 +9,13 @@ import (
 	pbreq "api_gateway/genproto/request"
 	pbrev "api_gateway/genproto/reviews"
 	pbtarf "api_gateway/genproto/tariff"
-	pbtop "api_gateway/genproto/top-properties"
+	pbtop "api_gateway/genproto/top_properties"
 	pbuser "api_gateway/genproto/user"
 	"api_gateway/internal/service"
+	"errors"
 	"log/slog"
+
+	"github.com/gin-gonic/gin"
 )
 
 type Handler struct {
@@ -39,8 +42,22 @@ func NewHandler(service service.ServiceManager, logs *slog.Logger) *Handler {
 		AccommodationService: service.PropertiesService(),
 		TopPropertiesService: service.TopPropertiesService(),
 		NotificationService:  service.NotificationService(),
-        ReportService:        service.ReportService(),      
-        RequestService:       service.RequestService(),
-		Log: logs,
+		ReportService:        service.ReportService(),
+		RequestService:       service.RequestService(),
+		Log:                  logs,
 	}
+}
+
+func getUserID(c *gin.Context) (string, error) {
+	id, ok := c.Get("user_id")
+	if !ok {
+		return "", errors.New("user id not found")
+	}
+
+	idStr, ok := id.(string)
+	if !ok {
+		return "", errors.New("invalid user id")
+	}
+
+	return idStr, nil
 }
