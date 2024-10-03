@@ -1,7 +1,7 @@
 package service
 
 import (
-	"api_gateway/config"
+	"api_gateway/internal/config"
 	"api_gateway/genproto/accommodation"
 	"api_gateway/genproto/favorites"
 	"api_gateway/genproto/payment"
@@ -9,6 +9,10 @@ import (
 	"api_gateway/genproto/tariff"
 	"api_gateway/genproto/top-properties"
 	"api_gateway/genproto/user"
+	"api_gateway/genproto/notification"
+	"api_gateway/genproto/request"
+	"api_gateway/genproto/report"
+
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -22,6 +26,9 @@ type ServiceManager interface {
 	ReviewService() reviews.ReviewsClient
 	TarifService() tariff.TariffServiceClient
 	TopPropertiesService() top_properties.TopPropertiesServiceClient
+	NotificationService() notification.NotificationServiceClient
+	ReportService() report.ReportServiceClient
+	RequestService() request.RequestServiceClient
 }
 
 type serviceManagerImpl struct {
@@ -32,6 +39,9 @@ type serviceManagerImpl struct {
 	reviewClient reviews.ReviewsClient
 	tarifClient tariff.TariffServiceClient
 	topPropertiesClient top_properties.TopPropertiesServiceClient
+	notificationClient notification.NotificationServiceClient
+	reportClient report.ReportServiceClient
+	requestClient request.RequestServiceClient
 }
 
 func (s *serviceManagerImpl) UserService() user.UserClient {
@@ -61,6 +71,19 @@ func (s *serviceManagerImpl) TarifService() tariff.TariffServiceClient {
 func (s *serviceManagerImpl) TopPropertiesService() top_properties.TopPropertiesServiceClient {
 	return s.topPropertiesClient
 }
+
+func (s *serviceManagerImpl) NotificationService() notification.NotificationServiceClient {
+	return s.notificationClient
+}
+
+func (s *serviceManagerImpl) ReportService() report.ReportServiceClient {
+	return s.reportClient
+}
+
+func (s *serviceManagerImpl) RequestService() request.RequestServiceClient {
+	return s.requestClient
+}
+
 
 
 func NewServiceManager() (ServiceManager, error) {
@@ -101,5 +124,8 @@ func NewServiceManager() (ServiceManager, error) {
 		// actioboardService
 		reviewClient: reviews.NewReviewsClient(connAction),
 		favoriteClient: favorites.NewFavoritesClient(connAction),
+		reportClient: report.NewReportServiceClient(connAction),
+		requestClient: request.NewRequestServiceClient(connAction),
+		notificationClient: notification.NewNotificationServiceClient(connAction),
 	}, nil
 }
