@@ -1,7 +1,7 @@
 package handler
 
 import (
-	pbtop "api_gateway/genproto/top_properties"
+	pbtop "api_gateway/genproto/top-properties"
 	"api_gateway/internal/models"
 	"fmt"
 	"net/http"
