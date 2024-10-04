@@ -282,6 +282,80 @@ definitions:
       transaction_date:
         type: string
     type: object
+  reviews.CreateReviewReq:
+    properties:
+      comment:
+        type: string
+      property_id:
+        type: string
+      rating:
+        type: integer
+      user_id:
+        type: string
+    type: object
+  reviews.CreateReviewRes:
+    properties:
+      comment:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      property_id:
+        type: string
+      rating:
+        type: integer
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+  reviews.DeleteReviewRes:
+    properties:
+      message:
+        type: string
+    type: object
+  reviews.GetAllReviewRes:
+    properties:
+      review:
+        items:
+          $ref: '#/definitions/reviews.Review'
+        type: array
+    type: object
+  reviews.GetByIdReviewRes:
+    properties:
+      comment:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      property_id:
+        type: string
+      rating:
+        type: integer
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+  reviews.Review:
+    properties:
+      comment:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      property_id:
+        type: string
+      rating:
+        type: integer
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
   tariff.CreateTariffReq:
     properties:
       days:
@@ -953,6 +1027,145 @@ paths:
       summary: Update top properties
       tags:
       - top_properties
+  /review/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new review with specified details
+      parameters:
+      - description: Create Review Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/reviews.CreateReviewReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/reviews.CreateReviewRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new review
+      tags:
+      - reviews
+  /review/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a review by its ID
+      parameters:
+      - description: Review ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/reviews.DeleteReviewRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Delete a review
+      tags:
+      - reviews
+  /review/getallreview:
+    get:
+      consumes:
+      - application/json
+      description: Get a paginated list of all reviews
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: Page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/reviews.GetAllReviewRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get all reviews
+      tags:
+      - reviews
+  /review/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get the details of a specific review by its ID
+      parameters:
+      - description: Review ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/reviews.GetByIdReviewRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get a review by ID
+      tags:
+      - reviews
+  /review/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update the details of a review by its ID
+      parameters:
+      - description: Review ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update Review Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/reviews.CreateReviewReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/reviews.CreateReviewRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Update an existing review
+      tags:
+      - reviews
 securityDefinitions:
   ApiKeyAuth:
     in: header
