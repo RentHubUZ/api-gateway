@@ -1266,10 +1266,6 @@ const docTemplate = `{
                 "status": {
                     "description": "'pending', 'completed', etc.",
                     "type": "string"
-                },
-                "transaction_date": {
-                    "description": "Optional",
-                    "type": "string"
                 }
             }
         },
