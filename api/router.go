@@ -96,4 +96,24 @@ func (c *controllerImpl) SetupRoutes(h *handler.Handler, logger *slog.Logger, ca
 		favorites.GET("/getbyid/:id", h.GetByIdFavorites)
 		favorites.DELETE("/delete/:id", h.DeleteFavorites)
 	}
+
+	request := router.Group("/request")
+	{
+		request.POST("/create", h.CreateRequest)
+		request.GET("/getbyid/:id", h.GetRequestById)
+		request.DELETE("/delete/:id", h.DeleteRequest)
+	}
+
+	report := router.Group("/report")
+	{
+		report.POST("/create", h.CreateReport)
+		report.GET("/getbyid/:id", h.GetReportById)
+		report.DELETE("/delete/:id", h.DeleteReport)
+	}
+
+	notification := router.Group("/notification")
+	{
+		notification.POST("/create", h.CreateNotification)
+		notification.GET("/get/:id", h.GetNotification)
+	}
 }

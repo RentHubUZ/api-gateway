@@ -42,7 +42,7 @@ func (h *Handler) GetProfile(c *gin.Context) {
 // @Tags user
 // @Security ApiKeyAuth
 // @Param data body models.UserUpdate true "New user data"
-// @Success 200 {object} "User updated successfully"
+// @Success 200 {object} string "User updated successfully"
 // @Failure 400 {object} string "Invalid data format"
 // @Failure 401 {object} string "Invalid user"
 // @Failure 500 {object} string "Server error while processing request"
@@ -82,7 +82,7 @@ func (h *Handler) UpdateProfile(c *gin.Context) {
 // @Description Deletes user profile
 // @Tags user
 // @Security ApiKeyAuth
-// @Success 200 {object} "User deleted successfully"
+// @Success 200 {object} string "User deleted successfully"
 // @Failure 401 {object} string "Invalid user"
 // @Failure 500 {object} string "Server error while processing request"
 // @Router /users/profile [delete]
@@ -111,7 +111,7 @@ func (h *Handler) DeleteProfile(c *gin.Context) {
 // @Tags user
 // @Security ApiKeyAuth
 // @Param data body models.ChangePassword true "Passwords"
-// @Success 200 {object} "Password changed successfully"
+// @Success 200 {object} string "Password changed successfully"
 // @Failure 400 {object} string "Invalid data format"
 // @Failure 401 {object} string "Invalid user"
 // @Failure 500 {object} string "Server error while processing request"

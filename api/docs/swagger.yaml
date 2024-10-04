@@ -145,6 +145,65 @@ definitions:
       message:
         type: string
     type: object
+  favorites.CreateFavoritesReq:
+    properties:
+      property_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  favorites.CreateFavoritesRes:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      property_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  favorites.DeleteFavoritesRes:
+    properties:
+      message:
+        type: string
+    type: object
+  favorites.Favorite:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      property_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  favorites.GetAllFavoritesRes:
+    properties:
+      favorites:
+        items:
+          $ref: '#/definitions/favorites.Favorite'
+        type: array
+    type: object
+  favorites.GetByIdFavoritesRes:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      property_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  models.ChangePassword:
+    properties:
+      new_password:
+        type: string
+      old_password:
+        type: string
+    type: object
   models.CreateProperties:
     properties:
       address:
@@ -237,6 +296,47 @@ definitions:
       top_status:
         type: boolean
     type: object
+  models.UserUpdate:
+    properties:
+      email:
+        type: string
+      full_name:
+        type: string
+      phone_number:
+        type: string
+    type: object
+  notification.CreateNotificationRequest:
+    properties:
+      content:
+        type: string
+      is_read:
+        type: boolean
+      user_id:
+        type: string
+    type: object
+  notification.CreateNotificationResponse:
+    properties:
+      notification:
+        $ref: '#/definitions/notification.Notification'
+    type: object
+  notification.GetNotificationResponse:
+    properties:
+      notification:
+        $ref: '#/definitions/notification.Notification'
+    type: object
+  notification.Notification:
+    properties:
+      content:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      is_read:
+        type: boolean
+      user_id:
+        type: string
+    type: object
   payment.CreatePaymentReq:
     properties:
       amount:
@@ -244,6 +344,9 @@ definitions:
         type: string
       status:
         description: '''pending'', ''completed'', etc.'
+        type: string
+      transaction_date:
+        description: Optional
         type: string
     type: object
   payment.CreatePaymentRes:
@@ -281,6 +384,89 @@ definitions:
         type: string
       transaction_date:
         type: string
+    type: object
+  report.CreateReportRequest:
+    properties:
+      description:
+        type: string
+      email:
+        type: string
+      problem:
+        type: string
+      property_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  report.CreateReportResponse:
+    properties:
+      report:
+        $ref: '#/definitions/report.Report'
+    type: object
+  report.GetReportResponse:
+    properties:
+      report:
+        $ref: '#/definitions/report.Report'
+    type: object
+  report.Report:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      problem:
+        type: string
+      property_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  report.Void:
+    type: object
+  request.CreateRequestRequest:
+    properties:
+      email:
+        items:
+          type: string
+        type: array
+      phone_number:
+        type: string
+      roommate_count:
+        type: integer
+      user_id:
+        type: string
+    type: object
+  request.CreateRequestResponse:
+    properties:
+      request:
+        $ref: '#/definitions/request.Request'
+    type: object
+  request.GetRequestResponse:
+    properties:
+      request:
+        $ref: '#/definitions/request.Request'
+    type: object
+  request.Request:
+    properties:
+      email:
+        description: email array
+        items:
+          type: string
+        type: array
+      id:
+        type: string
+      phone_number:
+        type: string
+      roommate_count:
+        type: integer
+      user_id:
+        type: string
+    type: object
+  request.Void:
     type: object
   reviews.CreateReviewReq:
     properties:
@@ -468,6 +654,19 @@ definitions:
     properties:
       success:
         type: boolean
+    type: object
+  user.Profile:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      full_name:
+        type: string
+      phone_number:
+        type: string
+      updated_at:
+        type: string
     type: object
 info:
   contact: {}
@@ -1027,6 +1226,315 @@ paths:
       summary: Update top properties
       tags:
       - top_properties
+  /favorites/create:
+    post:
+      consumes:
+      - application/json
+      description: Add a new property to user's favorites
+      parameters:
+      - description: Create Favorite Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/favorites.CreateFavoritesReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/favorites.CreateFavoritesRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Create a new favorite
+      tags:
+      - favorites
+  /favorites/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a property from user's favorites
+      parameters:
+      - description: Favorite ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/favorites.DeleteFavoritesRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Delete a favorite
+      tags:
+      - favorites
+  /favorites/getall:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of all user's favorite properties
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: Page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/favorites.GetAllFavoritesRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get all favorites
+      tags:
+      - favorites
+  /favorites/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a specific favorite by its ID
+      parameters:
+      - description: Favorite ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/favorites.GetByIdFavoritesRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get a favorite by ID
+      tags:
+      - favorites
+  /notification/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new notification for a user
+      parameters:
+      - description: Create Notification
+        in: body
+        name: notification
+        required: true
+        schema:
+          $ref: '#/definitions/notification.CreateNotificationRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/notification.CreateNotificationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Create a new notification
+      tags:
+      - notifications
+  /notification/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get notification details by ID
+      parameters:
+      - description: Notification ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/notification.GetNotificationResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get a notification by ID
+      tags:
+      - notifications
+  /report/create:
+    post:
+      consumes:
+      - application/json
+      description: Add a new user report
+      parameters:
+      - description: Create Report Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/report.CreateReportRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/report.CreateReportResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Create a new report
+      tags:
+      - report
+  /report/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a report by its ID
+      parameters:
+      - description: Report ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/report.Void'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Delete a report
+      tags:
+      - report
+  /report/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a specific report by its ID
+      parameters:
+      - description: Report ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/report.GetReportResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get a report by ID
+      tags:
+      - report
+  /request/create:
+    post:
+      consumes:
+      - application/json
+      description: Add a new user request
+      parameters:
+      - description: Create Request Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateRequestRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/request.CreateRequestResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Create a new request
+      tags:
+      - request
+  /request/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a request by its ID
+      parameters:
+      - description: Request ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/request.Void'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Delete a request
+      tags:
+      - request
+  /request/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a specific request by its ID
+      parameters:
+      - description: Request ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/request.GetRequestResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get a request by ID
+      tags:
+      - request
   /review/create:
     post:
       consumes:
@@ -1166,6 +1674,110 @@ paths:
       summary: Update an existing review
       tags:
       - reviews
+  /users/password:
+    put:
+      description: Changes user password
+      parameters:
+      - description: Passwords
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.ChangePassword'
+      responses:
+        "200":
+          description: Password changed successfully
+          schema:
+            type: string
+        "400":
+          description: Invalid data format
+          schema:
+            type: string
+        "401":
+          description: Invalid user
+          schema:
+            type: string
+        "500":
+          description: Server error while processing request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Changes password
+      tags:
+      - user
+  /users/profile:
+    delete:
+      description: Deletes user profile
+      responses:
+        "200":
+          description: User deleted successfully
+          schema:
+            type: string
+        "401":
+          description: Invalid user
+          schema:
+            type: string
+        "500":
+          description: Server error while processing request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Deletes profile
+      tags:
+      - user
+    get:
+      description: Retrieves user profile
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.Profile'
+        "401":
+          description: Invalid user
+          schema:
+            type: string
+        "500":
+          description: Server error while processing request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Gets profile
+      tags:
+      - user
+    put:
+      description: Updates user profile
+      parameters:
+      - description: New user data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserUpdate'
+      responses:
+        "200":
+          description: User updated successfully
+          schema:
+            type: string
+        "400":
+          description: Invalid data format
+          schema:
+            type: string
+        "401":
+          description: Invalid user
+          schema:
+            type: string
+        "500":
+          description: Server error while processing request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Updates profile
+      tags:
+      - user
 securityDefinitions:
   ApiKeyAuth:
     in: header
