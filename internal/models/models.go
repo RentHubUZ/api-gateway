@@ -43,9 +43,20 @@ type Top_Properties struct {
 }
 
 type Top_UpdateProperties struct {
-	Id string `json:"id"`
+	Id          string `json:"id"`
 	Property_id string `json:"property_id"`
-	Start_date string `json:"start_date"`
-	End_date string `json:"end_date"`
+	Start_date  string `json:"start_date"`
+	End_date    string `json:"end_date"`
 	Tariff_name string `json:"tariff_name"`
+}
+
+type UserUpdate struct {
+	FullName    string `json:"full_name"`
+	Email       string `json:"email"`
+	PhoneNumber string `json:"phone_number"`
+}
+
+type ChangePassword struct {
+	OldPassword string `json:"old_password"`
+	NewPassword string `json:"new_password"`
 }
