@@ -127,17 +127,17 @@ func (h *Handler) GetAllTarif(c *gin.Context) {
 
 	req := pbtarif.GetAllTariffReq{
 		Limit: limitInt32,
-		Page: pageInt32,
+		Page:  pageInt32,
 	}
 
-	resp,err := h.TarifService.GetAll(c,&req)
+	resp, err := h.TarifService.GetAll(c, &req)
 	if err != nil {
-		h.Log.Error(fmt.Sprintf("GetallTarif error: %v",err.Error()))
-		c.JSON(400,gin.H{"error":err.Error()})
+		h.Log.Error(fmt.Sprintf("GetallTarif error: %v", err.Error()))
+		c.JSON(400, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(200,resp)
+	c.JSON(200, resp)
 }
 
 // DeleteTarif godoc
@@ -158,11 +158,11 @@ func (h *Handler) DeleteTarif(c *gin.Context) {
 		Id: id,
 	}
 
-	resp,err := h.TarifService.Delete(c,&req)
+	resp, err := h.TarifService.Delete(c, &req)
 	if err != nil {
-		h.Log.Error(fmt.Sprintf("Delete tarif error: %v",err.Error()))
+		h.Log.Error(fmt.Sprintf("Delete tarif error: %v", err.Error()))
 		return
 	}
 
-	c.JSON(200,resp)
+	c.JSON(200, resp)
 }

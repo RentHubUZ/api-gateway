@@ -159,10 +159,10 @@ func (h *Handler) GetAllHouse(c *gin.Context) {
 
 	req := pbaccom.GetallHouseReq{
 		Limit: limitInt32,
-		Page: pageInt32,
+		Page:  pageInt32,
 	}
 
-	resp,err := h.AccommodationService.GetAllHouse(c,&req)
+	resp, err := h.AccommodationService.GetAllHouse(c, &req)
 	if err != nil {
 		h.Log.Error(fmt.Sprintf("error retrieving all house information %v", err))
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -190,7 +190,7 @@ func (h *Handler) GetByIdHouse(c *gin.Context) {
 		Id: id,
 	}
 
-	resp,err := h.AccommodationService.GetByIdHouse(c,&req)
+	resp, err := h.AccommodationService.GetByIdHouse(c, &req)
 	if err != nil {
 		h.Log.Error(fmt.Sprintf("error in getting information about house id %v", err))
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -218,7 +218,7 @@ func (h *Handler) DeleteHouse(c *gin.Context) {
 		Id: id,
 	}
 
-	resp,err := h.AccommodationService.DeleteHouse(c,&req)
+	resp, err := h.AccommodationService.DeleteHouse(c, &req)
 	if err != nil {
 		h.Log.Error(fmt.Sprintf("error when deleting house id information %v", err))
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})

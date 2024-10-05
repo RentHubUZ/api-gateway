@@ -13,15 +13,24 @@ import (
 // @Tags notifications
 // @Accept  json
 // @Produce  json
+// @Security ApiKeyAuth
 // @Param notification body notification.CreateNotificationRequest true "Create Notification"
 // @Success 200 {object} notification.CreateNotificationResponse
 // @Failure 400 {object} string
-// @Router /notification/create [post]
+// @Router /api/notification/create [post]
 func (h *Handler) CreateNotification(c *gin.Context) {
 	var req pb.CreateNotificationRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request"})
 		return
+	}
+	if req.UserId == "" || req.UserId == "string" {
+		UserId, err := getUserID(c)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+		req.UserId = UserId
 	}
 
 	resp, err := h.NotificationService.Create(c, &req)
@@ -39,10 +48,11 @@ func (h *Handler) CreateNotification(c *gin.Context) {
 // @Tags notifications
 // @Accept  json
 // @Produce  json
+// @Security ApiKeyAuth
 // @Param id path string true "Notification ID"
 // @Success 200 {object} notification.GetNotificationResponse
 // @Failure 500 {object} string
-// @Router /notification/get/{id} [get]
+// @Router /api/notification/get/{id} [get]
 func (h *Handler) GetNotification(c *gin.Context) {
 	id := c.Param("id")
 
