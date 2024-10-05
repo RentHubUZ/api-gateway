@@ -197,13 +197,6 @@ definitions:
       user_id:
         type: string
     type: object
-  models.ChangePassword:
-    properties:
-      new_password:
-        type: string
-      old_password:
-        type: string
-    type: object
   models.CreateProperties:
     properties:
       address:
@@ -1226,6 +1219,37 @@ paths:
       summary: Update top properties
       tags:
       - top_properties
+  /api/upload/imagesandvedio:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Fayl yuklash uchun endpoint
+      parameters:
+      - description: Yuklanadigan fayl
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Fayl yuklash
+      tags:
+      - Media
   /favorites/create:
     post:
       consumes:
@@ -1674,38 +1698,6 @@ paths:
       summary: Update an existing review
       tags:
       - reviews
-  /users/password:
-    put:
-      description: Changes user password
-      parameters:
-      - description: Passwords
-        in: body
-        name: data
-        required: true
-        schema:
-          $ref: '#/definitions/models.ChangePassword'
-      responses:
-        "200":
-          description: Password changed successfully
-          schema:
-            type: string
-        "400":
-          description: Invalid data format
-          schema:
-            type: string
-        "401":
-          description: Invalid user
-          schema:
-            type: string
-        "500":
-          description: Server error while processing request
-          schema:
-            type: string
-      security:
-      - ApiKeyAuth: []
-      summary: Changes password
-      tags:
-      - user
   /users/profile:
     delete:
       description: Deletes user profile

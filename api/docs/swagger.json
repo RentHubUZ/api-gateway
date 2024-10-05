@@ -884,6 +884,55 @@
                 }
             }
         },
+        "/api/upload/imagesandvedio": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Fayl yuklash uchun endpoint",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Media"
+                ],
+                "summary": "Fayl yuklash",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "Yuklanadigan fayl",
+                        "name": "file",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/favorites/create": {
             "post": {
                 "description": "Add a new property to user's favorites",
@@ -1568,57 +1617,6 @@
                 }
             }
         },
-        "/users/password": {
-            "put": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "Changes user password",
-                "tags": [
-                    "user"
-                ],
-                "summary": "Changes password",
-                "parameters": [
-                    {
-                        "description": "Passwords",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.ChangePassword"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Password changed successfully",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid data format",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "401": {
-                        "description": "Invalid user",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "Server error while processing request",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
         "/users/profile": {
             "get": {
                 "security": [
@@ -2035,17 +2033,6 @@
                     "type": "string"
                 },
                 "user_id": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.ChangePassword": {
-            "type": "object",
-            "properties": {
-                "new_password": {
-                    "type": "string"
-                },
-                "old_password": {
                     "type": "string"
                 }
             }
