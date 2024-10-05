@@ -197,13 +197,6 @@ definitions:
       user_id:
         type: string
     type: object
-  models.ChangePassword:
-    properties:
-      new_password:
-        type: string
-      old_password:
-        type: string
-    type: object
   models.CreateProperties:
     properties:
       address:
@@ -1701,6 +1694,7 @@ paths:
       summary: Update top properties
       tags:
       - top_properties
+<<<<<<< HEAD
   /api/user/password:
     put:
       description: Changes user password
@@ -1718,6 +1712,493 @@ paths:
             type: string
         "400":
           description: Invalid data format
+=======
+  /api/upload/imagesandvedio:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Fayl yuklash uchun endpoint
+      parameters:
+      - description: Yuklanadigan fayl
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Fayl yuklash
+      tags:
+      - Media
+  /favorites/create:
+    post:
+      consumes:
+      - application/json
+      description: Add a new property to user's favorites
+      parameters:
+      - description: Create Favorite Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/favorites.CreateFavoritesReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/favorites.CreateFavoritesRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Create a new favorite
+      tags:
+      - favorites
+  /favorites/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a property from user's favorites
+      parameters:
+      - description: Favorite ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/favorites.DeleteFavoritesRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Delete a favorite
+      tags:
+      - favorites
+  /favorites/getall:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of all user's favorite properties
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: Page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/favorites.GetAllFavoritesRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get all favorites
+      tags:
+      - favorites
+  /favorites/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a specific favorite by its ID
+      parameters:
+      - description: Favorite ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/favorites.GetByIdFavoritesRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get a favorite by ID
+      tags:
+      - favorites
+  /notification/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new notification for a user
+      parameters:
+      - description: Create Notification
+        in: body
+        name: notification
+        required: true
+        schema:
+          $ref: '#/definitions/notification.CreateNotificationRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/notification.CreateNotificationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Create a new notification
+      tags:
+      - notifications
+  /notification/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get notification details by ID
+      parameters:
+      - description: Notification ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/notification.GetNotificationResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get a notification by ID
+      tags:
+      - notifications
+  /report/create:
+    post:
+      consumes:
+      - application/json
+      description: Add a new user report
+      parameters:
+      - description: Create Report Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/report.CreateReportRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/report.CreateReportResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Create a new report
+      tags:
+      - report
+  /report/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a report by its ID
+      parameters:
+      - description: Report ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/report.Void'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Delete a report
+      tags:
+      - report
+  /report/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a specific report by its ID
+      parameters:
+      - description: Report ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/report.GetReportResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get a report by ID
+      tags:
+      - report
+  /request/create:
+    post:
+      consumes:
+      - application/json
+      description: Add a new user request
+      parameters:
+      - description: Create Request Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateRequestRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/request.CreateRequestResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Create a new request
+      tags:
+      - request
+  /request/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a request by its ID
+      parameters:
+      - description: Request ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/request.Void'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Delete a request
+      tags:
+      - request
+  /request/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a specific request by its ID
+      parameters:
+      - description: Request ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/request.GetRequestResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get a request by ID
+      tags:
+      - request
+  /review/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new review with specified details
+      parameters:
+      - description: Create Review Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/reviews.CreateReviewReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/reviews.CreateReviewRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new review
+      tags:
+      - reviews
+  /review/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a review by its ID
+      parameters:
+      - description: Review ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/reviews.DeleteReviewRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Delete a review
+      tags:
+      - reviews
+  /review/getallreview:
+    get:
+      consumes:
+      - application/json
+      description: Get a paginated list of all reviews
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: Page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/reviews.GetAllReviewRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get all reviews
+      tags:
+      - reviews
+  /review/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get the details of a specific review by its ID
+      parameters:
+      - description: Review ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/reviews.GetByIdReviewRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get a review by ID
+      tags:
+      - reviews
+  /review/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update the details of a review by its ID
+      parameters:
+      - description: Review ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update Review Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/reviews.CreateReviewReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/reviews.CreateReviewRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Update an existing review
+      tags:
+      - reviews
+  /users/profile:
+    delete:
+      description: Deletes user profile
+      responses:
+        "200":
+          description: User deleted successfully
+>>>>>>> c1f60b78e49c69e939171a85498f37daea35280b
           schema:
             type: string
         "401":
@@ -1730,10 +2211,16 @@ paths:
             type: string
       security:
       - ApiKeyAuth: []
+<<<<<<< HEAD
       summary: Changes password
       tags:
       - user
   /api/user/profile:
+=======
+      summary: Deletes profile
+      tags:
+      - user
+>>>>>>> c1f60b78e49c69e939171a85498f37daea35280b
     get:
       description: Retrieves user profile
       responses:

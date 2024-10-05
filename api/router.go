@@ -116,12 +116,9 @@ func (c *controllerImpl) SetupRoutes(h *handler.Handler, logger *slog.Logger, ca
 		notification.POST("/create", h.CreateNotification)
 		notification.GET("/get/:id", h.GetNotification)
 	}
-	
-	user := router.Group("/user")
+
+	upload_images_vedio := router.Group("/upload")
 	{
-		user.GET("/profile", h.GetProfile)
-		user.PUT("/profile/update", h.UpdateProfile)
-		user.DELETE("/profile/delete", h.DeleteProfile)
-		user.GET("/password ", h.ChangePassword)
+		upload_images_vedio.POST("/imagesandvedio",h.UploadMedia)
 	}
 }
