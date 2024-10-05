@@ -1,0 +1,1786 @@
+definitions:
+  accommodation.CreateHouseRes:
+    properties:
+      address:
+        type: string
+      bathrooms:
+        type: integer
+      bedrooms:
+        type: integer
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      image_url:
+        items:
+          type: string
+        type: array
+      latitude:
+        type: number
+      lease_duration:
+        type: integer
+      lease_terms:
+        type: string
+      listing_status:
+        type: string
+      longitude:
+        type: number
+      owner_id:
+        type: string
+      price:
+        type: number
+      property_type:
+        type: string
+      roommate_count:
+        type: integer
+      square_footage:
+        type: number
+      top_status:
+        type: boolean
+      updated_at:
+        type: string
+    type: object
+  accommodation.DeleteHouseRes:
+    properties:
+      message:
+        type: string
+    type: object
+  accommodation.GetAllHouseRes:
+    properties:
+      house:
+        items:
+          $ref: '#/definitions/accommodation.GetAllHouses'
+        type: array
+    type: object
+  accommodation.GetAllHouses:
+    properties:
+      address:
+        type: string
+      bathrooms:
+        type: integer
+      bedrooms:
+        type: integer
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      image_url:
+        items:
+          type: string
+        type: array
+      latitude:
+        type: number
+      lease_duration:
+        type: integer
+      lease_terms:
+        type: string
+      listing_status:
+        type: string
+      longitude:
+        type: number
+      owner_id:
+        type: string
+      price:
+        type: number
+      property_type:
+        type: string
+      roommate_count:
+        type: integer
+      square_footage:
+        type: number
+      top_status:
+        type: boolean
+      updated_at:
+        type: string
+    type: object
+  accommodation.GetByIdHouseRes:
+    properties:
+      address:
+        type: string
+      bathrooms:
+        type: integer
+      bedrooms:
+        type: integer
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      image_url:
+        items:
+          type: string
+        type: array
+      latitude:
+        type: number
+      lease_duration:
+        type: integer
+      lease_terms:
+        type: string
+      listing_status:
+        type: string
+      longitude:
+        type: number
+      owner_id:
+        type: string
+      price:
+        type: number
+      property_type:
+        type: string
+      roommate_count:
+        type: integer
+      square_footage:
+        type: number
+      top_status:
+        type: boolean
+      updated_at:
+        type: string
+    type: object
+  accommodation.UpdateHouseRes:
+    properties:
+      message:
+        type: string
+    type: object
+  favorites.CreateFavoritesReq:
+    properties:
+      property_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  favorites.CreateFavoritesRes:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      property_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  favorites.DeleteFavoritesRes:
+    properties:
+      message:
+        type: string
+    type: object
+  favorites.Favorite:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      property_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  favorites.GetAllFavoritesRes:
+    properties:
+      favorites:
+        items:
+          $ref: '#/definitions/favorites.Favorite'
+        type: array
+    type: object
+  favorites.GetByIdFavoritesRes:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      property_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  models.ChangePassword:
+    properties:
+      new_password:
+        type: string
+      old_password:
+        type: string
+    type: object
+  models.CreateProperties:
+    properties:
+      address:
+        type: string
+      bathrooms:
+        type: integer
+      bedrooms:
+        type: integer
+      description:
+        type: string
+      image_url:
+        items:
+          type: string
+        type: array
+      latitude:
+        type: number
+      lease_duration:
+        type: integer
+      lease_terms:
+        type: string
+      listing_status:
+        type: string
+      longitude:
+        type: number
+      price:
+        type: number
+      property_type:
+        type: string
+      roommate_count:
+        type: integer
+      square_footage:
+        type: number
+      top_status:
+        type: boolean
+    type: object
+  models.Top_Properties:
+    properties:
+      property_id:
+        type: string
+      tariff_name:
+        type: string
+    type: object
+  models.Top_UpdateProperties:
+    properties:
+      end_date:
+        type: string
+      id:
+        type: string
+      property_id:
+        type: string
+      start_date:
+        type: string
+      tariff_name:
+        type: string
+    type: object
+  models.UpdateProperties:
+    properties:
+      address:
+        type: string
+      bathrooms:
+        type: integer
+      bedrooms:
+        type: integer
+      description:
+        type: string
+      id:
+        type: string
+      image_url:
+        items:
+          type: string
+        type: array
+      latitude:
+        type: number
+      lease_duration:
+        type: integer
+      lease_terms:
+        type: string
+      listing_status:
+        type: string
+      longitude:
+        type: number
+      price:
+        type: number
+      property_type:
+        type: string
+      roommate_count:
+        type: integer
+      square_footage:
+        type: number
+      top_status:
+        type: boolean
+    type: object
+  models.UserUpdate:
+    properties:
+      email:
+        type: string
+      full_name:
+        type: string
+      phone_number:
+        type: string
+    type: object
+  notification.CreateNotificationRequest:
+    properties:
+      content:
+        type: string
+      is_read:
+        type: boolean
+      user_id:
+        type: string
+    type: object
+  notification.CreateNotificationResponse:
+    properties:
+      notification:
+        $ref: '#/definitions/notification.Notification'
+    type: object
+  notification.GetNotificationResponse:
+    properties:
+      notification:
+        $ref: '#/definitions/notification.Notification'
+    type: object
+  notification.Notification:
+    properties:
+      content:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      is_read:
+        type: boolean
+      user_id:
+        type: string
+    type: object
+  payment.CreatePaymentReq:
+    properties:
+      amount:
+        description: Decimal as a string to avoid precision loss
+        type: string
+      status:
+        description: '''pending'', ''completed'', etc.'
+        type: string
+      transaction_date:
+        description: Optional
+        type: string
+    type: object
+  payment.CreatePaymentRes:
+    properties:
+      id:
+        description: Payment ID
+        type: string
+    type: object
+  payment.DeletePaymentRes:
+    properties:
+      success:
+        type: boolean
+    type: object
+  payment.GetAllPaymentRes:
+    properties:
+      payments:
+        items:
+          $ref: '#/definitions/payment.Payment'
+        type: array
+    type: object
+  payment.GetPaymentRes:
+    properties:
+      payment:
+        $ref: '#/definitions/payment.Payment'
+    type: object
+  payment.Payment:
+    properties:
+      amount:
+        description: Decimal as a string
+        type: string
+      id:
+        type: string
+      status:
+        description: '''pending'', ''completed'', etc.'
+        type: string
+      transaction_date:
+        type: string
+    type: object
+  report.CreateReportRequest:
+    properties:
+      description:
+        type: string
+      email:
+        type: string
+      problem:
+        type: string
+      property_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  report.CreateReportResponse:
+    properties:
+      report:
+        $ref: '#/definitions/report.Report'
+    type: object
+  report.GetReportResponse:
+    properties:
+      report:
+        $ref: '#/definitions/report.Report'
+    type: object
+  report.Report:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      problem:
+        type: string
+      property_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  report.Void:
+    type: object
+  request.CreateRequestRequest:
+    properties:
+      email:
+        items:
+          type: string
+        type: array
+      phone_number:
+        type: string
+      roommate_count:
+        type: integer
+      user_id:
+        type: string
+    type: object
+  request.CreateRequestResponse:
+    properties:
+      request:
+        $ref: '#/definitions/request.Request'
+    type: object
+  request.GetRequestResponse:
+    properties:
+      request:
+        $ref: '#/definitions/request.Request'
+    type: object
+  request.Request:
+    properties:
+      email:
+        description: email array
+        items:
+          type: string
+        type: array
+      id:
+        type: string
+      phone_number:
+        type: string
+      roommate_count:
+        type: integer
+      user_id:
+        type: string
+    type: object
+  request.Void:
+    type: object
+  reviews.CreateReviewReq:
+    properties:
+      comment:
+        type: string
+      property_id:
+        type: string
+      rating:
+        type: integer
+      user_id:
+        type: string
+    type: object
+  reviews.CreateReviewRes:
+    properties:
+      comment:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      property_id:
+        type: string
+      rating:
+        type: integer
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+  reviews.DeleteReviewRes:
+    properties:
+      message:
+        type: string
+    type: object
+  reviews.GetAllReviewRes:
+    properties:
+      review:
+        items:
+          $ref: '#/definitions/reviews.Review'
+        type: array
+    type: object
+  reviews.GetByIdReviewRes:
+    properties:
+      comment:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      property_id:
+        type: string
+      rating:
+        type: integer
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+  reviews.Review:
+    properties:
+      comment:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      property_id:
+        type: string
+      rating:
+        type: integer
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+  tariff.CreateTariffReq:
+    properties:
+      days:
+        type: integer
+      name:
+        type: string
+      offers:
+        type: string
+      price:
+        type: number
+    type: object
+  tariff.CreateTariffRes:
+    properties:
+      id:
+        type: string
+    type: object
+  tariff.DeleteTariffRes:
+    properties:
+      success:
+        type: boolean
+    type: object
+  tariff.GetAllTariffRes:
+    properties:
+      tariffs:
+        items:
+          $ref: '#/definitions/tariff.Tariff'
+        type: array
+    type: object
+  tariff.GetTariffRes:
+    properties:
+      tariff:
+        $ref: '#/definitions/tariff.Tariff'
+    type: object
+  tariff.Tariff:
+    properties:
+      created_at:
+        type: string
+      days:
+        type: integer
+      id:
+        type: string
+      name:
+        type: string
+      offers:
+        type: string
+      price:
+        type: number
+      updated_at:
+        type: string
+    type: object
+  tariff.UpdateTariffReq:
+    properties:
+      days:
+        type: integer
+      id:
+        type: string
+      name:
+        type: string
+      offers:
+        type: string
+      price:
+        type: number
+    type: object
+  tariff.UpdateTariffRes:
+    properties:
+      success:
+        type: boolean
+    type: object
+  top_properties.CreateTopPropertyRes:
+    properties:
+      id:
+        description: Top property ID
+        type: string
+    type: object
+  top_properties.DeleteTopPropertyRes:
+    properties:
+      success:
+        type: boolean
+    type: object
+  top_properties.GetAllTopPropertyRes:
+    properties:
+      top_properties:
+        items:
+          $ref: '#/definitions/top_properties.TopProperty'
+        type: array
+    type: object
+  top_properties.GetTopPropertyRes:
+    properties:
+      top_property:
+        $ref: '#/definitions/top_properties.TopProperty'
+    type: object
+  top_properties.TopProperty:
+    properties:
+      created_at:
+        type: string
+      end_date:
+        type: string
+      id:
+        type: string
+      property_id:
+        type: string
+      start_date:
+        type: string
+      tariff_name:
+        type: string
+      user_id:
+        type: string
+    type: object
+  top_properties.UpdateTopPropertyRes:
+    properties:
+      success:
+        type: boolean
+    type: object
+  user.Profile:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      full_name:
+        type: string
+      phone_number:
+        type: string
+      updated_at:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: This is a sample server for Api-gateway Service
+  title: Api Gateway
+  version: "1.0"
+paths:
+  /api/payment/createpayment:
+    post:
+      consumes:
+      - application/json
+      description: Create a new payment with specified details
+      parameters:
+      - description: Create Payment Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/payment.CreatePaymentReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payment.CreatePaymentRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new payment
+      tags:
+      - payments
+  /api/payment/deletepayment/{payment_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a payment by payment ID
+      parameters:
+      - description: Payment ID
+        in: path
+        name: payment_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payment.DeletePaymentRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Delete payment
+      tags:
+      - payments
+  /api/payment/getallpayment/{limit}/{page}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of all payments with pagination
+      parameters:
+      - description: Limit
+        in: path
+        name: limit
+        required: true
+        type: integer
+      - description: Page
+        in: path
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payment.GetAllPaymentRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Get all payments
+      tags:
+      - payments
+  /api/payment/getbyidpayment/{payment_id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve payment details by payment ID
+      parameters:
+      - description: Payment ID
+        in: path
+        name: payment_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payment.GetPaymentRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Get payment by ID
+      tags:
+      - payments
+  /api/properties/propertiescreate:
+    post:
+      consumes:
+      - application/json
+      description: Create a new house with specified properties
+      parameters:
+      - description: Create House Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateProperties'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            $ref: '#/definitions/accommodation.CreateHouseRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new house
+      tags:
+      - houses
+  /api/properties/propertiesdelete/{properties_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a house by ID
+      parameters:
+      - description: Property ID
+        in: path
+        name: properties_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            $ref: '#/definitions/accommodation.DeleteHouseRes'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a house
+      tags:
+      - houses
+  /api/properties/propertiesgetall/{limit}/{page}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of all houses with pagination
+      parameters:
+      - description: Limit
+        in: path
+        name: limit
+        required: true
+        type: integer
+      - description: Page
+        in: path
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            $ref: '#/definitions/accommodation.GetAllHouseRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Get all houses
+      tags:
+      - houses
+  /api/properties/propertiesgetbyid/{properties_id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve house information by ID
+      parameters:
+      - description: Property ID
+        in: path
+        name: properties_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            $ref: '#/definitions/accommodation.GetByIdHouseRes'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Get house by ID
+      tags:
+      - houses
+  /api/properties/propertiesupdate:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing house with new details
+      parameters:
+      - description: Update House Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateProperties'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            $ref: '#/definitions/accommodation.UpdateHouseRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Update an existing house
+      tags:
+      - houses
+  /api/tarif/createtarif:
+    post:
+      consumes:
+      - application/json
+      description: Create a new tariff with specified details
+      parameters:
+      - description: Create Tariff Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/tariff.CreateTariffReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tariff.CreateTariffRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new tariff
+      tags:
+      - tariffs
+  /api/tarif/deletetarif/{tarif_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a tariff by tariff ID
+      parameters:
+      - description: Tariff ID
+        in: path
+        name: tarif_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tariff.DeleteTariffRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Delete tariff
+      tags:
+      - tariffs
+  /api/tarif/getalltarif/{limit}/{page}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of all tariffs with pagination
+      parameters:
+      - description: Limit
+        in: path
+        name: limit
+        required: true
+        type: integer
+      - description: Page
+        in: path
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tariff.GetAllTariffRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Get all tariffs
+      tags:
+      - tariffs
+  /api/tarif/getbyidtarif/{tarif_id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve tariff details by tariff ID
+      parameters:
+      - description: Tariff ID
+        in: path
+        name: tarif_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tariff.GetTariffRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Get tariff by ID
+      tags:
+      - tariffs
+  /api/tarif/updatetarif:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing tariff with specified details
+      parameters:
+      - description: Update Tariff Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/tariff.UpdateTariffReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tariff.UpdateTariffRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Update a tariff
+      tags:
+      - tariffs
+  /api/topproperties/createtopproperties:
+    post:
+      consumes:
+      - application/json
+      description: Create a new top property with specified details
+      parameters:
+      - description: Top Properties
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/models.Top_Properties'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/top_properties.CreateTopPropertyRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Create top properties
+      tags:
+      - top_properties
+  /api/topproperties/deletetopproperties/{top_properties_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a top property by its ID
+      parameters:
+      - description: Top Properties ID
+        in: path
+        name: top_properties_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/top_properties.DeleteTopPropertyRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Delete top properties
+      tags:
+      - top_properties
+  /api/topproperties/getalltopproperties/{limit}/{page}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of all top properties with pagination
+      parameters:
+      - description: Limit
+        in: path
+        name: limit
+        required: true
+        type: integer
+      - description: Page
+        in: path
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/top_properties.GetAllTopPropertyRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Get all top properties
+      tags:
+      - top_properties
+  /api/topproperties/getbyidtopproperties/{top_properties_id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve top properties details by its ID
+      parameters:
+      - description: Top Properties ID
+        in: path
+        name: top_properties_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/top_properties.GetTopPropertyRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Get top properties by ID
+      tags:
+      - top_properties
+  /api/topproperties/updatetopproperties:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing top property by its ID
+      parameters:
+      - description: Update Top Properties
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/models.Top_UpdateProperties'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/top_properties.UpdateTopPropertyRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Update top properties
+      tags:
+      - top_properties
+  /favorites/create:
+    post:
+      consumes:
+      - application/json
+      description: Add a new property to user's favorites
+      parameters:
+      - description: Create Favorite Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/favorites.CreateFavoritesReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/favorites.CreateFavoritesRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Create a new favorite
+      tags:
+      - favorites
+  /favorites/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a property from user's favorites
+      parameters:
+      - description: Favorite ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/favorites.DeleteFavoritesRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Delete a favorite
+      tags:
+      - favorites
+  /favorites/getall:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of all user's favorite properties
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: Page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/favorites.GetAllFavoritesRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get all favorites
+      tags:
+      - favorites
+  /favorites/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a specific favorite by its ID
+      parameters:
+      - description: Favorite ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/favorites.GetByIdFavoritesRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get a favorite by ID
+      tags:
+      - favorites
+  /notification/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new notification for a user
+      parameters:
+      - description: Create Notification
+        in: body
+        name: notification
+        required: true
+        schema:
+          $ref: '#/definitions/notification.CreateNotificationRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/notification.CreateNotificationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Create a new notification
+      tags:
+      - notifications
+  /notification/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get notification details by ID
+      parameters:
+      - description: Notification ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/notification.GetNotificationResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get a notification by ID
+      tags:
+      - notifications
+  /report/create:
+    post:
+      consumes:
+      - application/json
+      description: Add a new user report
+      parameters:
+      - description: Create Report Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/report.CreateReportRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/report.CreateReportResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Create a new report
+      tags:
+      - report
+  /report/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a report by its ID
+      parameters:
+      - description: Report ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/report.Void'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Delete a report
+      tags:
+      - report
+  /report/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a specific report by its ID
+      parameters:
+      - description: Report ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/report.GetReportResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get a report by ID
+      tags:
+      - report
+  /request/create:
+    post:
+      consumes:
+      - application/json
+      description: Add a new user request
+      parameters:
+      - description: Create Request Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateRequestRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/request.CreateRequestResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Create a new request
+      tags:
+      - request
+  /request/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a request by its ID
+      parameters:
+      - description: Request ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/request.Void'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Delete a request
+      tags:
+      - request
+  /request/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a specific request by its ID
+      parameters:
+      - description: Request ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/request.GetRequestResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get a request by ID
+      tags:
+      - request
+  /review/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new review with specified details
+      parameters:
+      - description: Create Review Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/reviews.CreateReviewReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/reviews.CreateReviewRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new review
+      tags:
+      - reviews
+  /review/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a review by its ID
+      parameters:
+      - description: Review ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/reviews.DeleteReviewRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Delete a review
+      tags:
+      - reviews
+  /review/getallreview:
+    get:
+      consumes:
+      - application/json
+      description: Get a paginated list of all reviews
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: Page
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/reviews.GetAllReviewRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get all reviews
+      tags:
+      - reviews
+  /review/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get the details of a specific review by its ID
+      parameters:
+      - description: Review ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/reviews.GetByIdReviewRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get a review by ID
+      tags:
+      - reviews
+  /review/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update the details of a review by its ID
+      parameters:
+      - description: Review ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update Review Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/reviews.CreateReviewReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/reviews.CreateReviewRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Update an existing review
+      tags:
+      - reviews
+  /users/password:
+    put:
+      description: Changes user password
+      parameters:
+      - description: Passwords
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.ChangePassword'
+      responses:
+        "200":
+          description: Password changed successfully
+          schema:
+            type: string
+        "400":
+          description: Invalid data format
+          schema:
+            type: string
+        "401":
+          description: Invalid user
+          schema:
+            type: string
+        "500":
+          description: Server error while processing request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Changes password
+      tags:
+      - user
+  /users/profile:
+    delete:
+      description: Deletes user profile
+      responses:
+        "200":
+          description: User deleted successfully
+          schema:
+            type: string
+        "401":
+          description: Invalid user
+          schema:
+            type: string
+        "500":
+          description: Server error while processing request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Deletes profile
+      tags:
+      - user
+    get:
+      description: Retrieves user profile
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.Profile'
+        "401":
+          description: Invalid user
+          schema:
+            type: string
+        "500":
+          description: Server error while processing request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Gets profile
+      tags:
+      - user
+    put:
+      description: Updates user profile
+      parameters:
+      - description: New user data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserUpdate'
+      responses:
+        "200":
+          description: User updated successfully
+          schema:
+            type: string
+        "400":
+          description: Invalid data format
+          schema:
+            type: string
+        "401":
+          description: Invalid user
+          schema:
+            type: string
+        "500":
+          description: Server error while processing request
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Updates profile
+      tags:
+      - user
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
