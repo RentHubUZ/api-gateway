@@ -1,5 +1,7 @@
 package models
 
+import "mime/multipart"
+
 type CreateProperties struct {
 	Address        string   `json:"address"`
 	Price          float64  `json:"price"`
@@ -59,4 +61,8 @@ type UserUpdate struct {
 type ChangePassword struct {
 	OldPassword string `json:"old_password"`
 	NewPassword string `json:"new_password"`
+}
+
+type File struct {
+    File multipart.FileHeader `form:"file" binding:"required"` // Yuklanadigan fayl
 }

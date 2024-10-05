@@ -1,9 +1,10 @@
 package handler
 
 import (
-	"net/http"
-	"github.com/gin-gonic/gin"
 	request "api_gateway/genproto/request"
+	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 // CreateRequest godoc
@@ -12,16 +13,26 @@ import (
 // @Tags         request
 // @Accept       json
 // @Produce      json
+// @Security ApiKeyAuth
 // @Param        body body request.CreateRequestRequest true "Create Request Request"
 // @Success      200 {object} request.CreateRequestResponse
 // @Failure      400 {object} string
-// @Router       /request/create [post]
+// @Router       /api/request/create [post]
 func (h *Handler) CreateRequest(c *gin.Context) {
 	var req request.CreateRequestRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
+	if req.UserId == "" || req.UserId == "string" {
+		UserId, err := getUserID(c)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+		req.UserId = UserId
+	}
+	
 	res, err := h.RequestService.CreateRequest(c, &req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -36,10 +47,11 @@ func (h *Handler) CreateRequest(c *gin.Context) {
 // @Tags         request
 // @Accept       json
 // @Produce      json
+// @Security ApiKeyAuth
 // @Param        id path string true "Request ID"
 // @Success      200 {object} request.GetRequestResponse
 // @Failure      400 {object} string
-// @Router       /request/getbyid/{id} [get]
+// @Router       /api/request/getbyid/{id} [get]
 func (h *Handler) GetRequestById(c *gin.Context) {
 	var req request.GetRequestRequest
 	req.Id = c.Param("id")
@@ -61,10 +73,11 @@ func (h *Handler) GetRequestById(c *gin.Context) {
 // @Tags         request
 // @Accept       json
 // @Produce      json
+// @Security ApiKeyAuth
 // @Param        id path string true "Request ID"
 // @Success      200 {object} request.Void
 // @Failure      400 {object} string
-// @Router       /request/delete/{id} [delete]
+// @Router       /api/request/delete/{id} [delete]
 func (h *Handler) DeleteRequest(c *gin.Context) {
 	var req request.Request
 	req.Id = c.Param("id")

@@ -1,7 +1,7 @@
 package handler
 
 import (
-	pbtop "api_gateway/genproto/top-properties"
+	pbtop "api_gateway/genproto/top_properties"
 	"api_gateway/internal/models"
 	"fmt"
 	"net/http"
@@ -159,17 +159,17 @@ func (h *Handler) GetAllTopProperties(c *gin.Context) {
 
 	req := pbtop.GetAllTopPropertyReq{
 		Limit: limitInt32,
-		Page: pageInt32,
+		Page:  pageInt32,
 	}
 
-	resp,err := h.TopPropertiesService.GetAll(c,&req)
+	resp, err := h.TopPropertiesService.GetAll(c, &req)
 	if err != nil {
-		h.Log.Error(fmt.Sprintf("Getall properties error: %v",err.Error()))
-		c.JSON(400,gin.H{"error":err.Error()})
+		h.Log.Error(fmt.Sprintf("Getall properties error: %v", err.Error()))
+		c.JSON(400, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(200,resp)
+	c.JSON(200, resp)
 }
 
 // DeleteTopProperties godoc
@@ -190,12 +190,12 @@ func (h *Handler) DeleteTopProperties(c *gin.Context) {
 		Id: id,
 	}
 
-	resp,err := h.TopPropertiesService.Delete(c,&req)
+	resp, err := h.TopPropertiesService.Delete(c, &req)
 	if err != nil {
-		h.Log.Error(fmt.Sprintf("Delete top properties error: %v",err.Error()))
-		c.JSON(400,gin.H{"error":err.Error()})
+		h.Log.Error(fmt.Sprintf("Delete top properties error: %v", err.Error()))
+		c.JSON(400, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(200,resp)
+	c.JSON(200, resp)
 }

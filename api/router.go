@@ -116,4 +116,9 @@ func (c *controllerImpl) SetupRoutes(h *handler.Handler, logger *slog.Logger, ca
 		notification.POST("/create", h.CreateNotification)
 		notification.GET("/get/:id", h.GetNotification)
 	}
+
+	upload_images_vedio := router.Group("/upload")
+	{
+		upload_images_vedio.POST("/imagesandvedio",h.UploadMedia)
+	}
 }
