@@ -1,9 +1,48 @@
-p, user, /users/*, GET
-p, user, /users/*, PUT
-p, user, /users/*, DELETE
-p, user, /users/*, POST
+p, user, /api/user/*, GET
+p, user, /api/user/*, PUT
+p, user, /api/user/*, DELETE
+p, user, /api/user/*, POST
 
-p, user, /tweets/*, GET
-p, user, /tweets/*, PUT
-p, user, /tweets/*, DELETE
-p, user, /tweets/*, POST
+p, user, /api/properties/*, POST
+p, user, /api/properties/*, PUT
+p, user, /api/properties/*, GET
+p, user, /api/properties/*, GET
+p, user, /api/properties/*, DELETE
+
+p, user, /api/payment/*, POST
+p, user, /api/payment/*, GET
+p, user, /api/payment/*, GET
+p, user, /api/payment/*, DELETE
+
+p, user, /api/tarif/*, POST
+p, user, /api/tarif/*, PUT
+p, user, /api/tarif/*, GET
+p, user, /api/tarif/*, GET
+p, user, /api/tarif/*, DELETE
+
+p, user, /api/topproperties/*, POST
+p, user, /api/topproperties/*, PUT
+p, user, /api/topproperties/*, GET
+p, user, /api/topproperties/*, GET
+p, user, /api/topproperties/*, DELETE
+
+p, user, /api/review/*, POST
+p, user, /api/review/*, GET
+p, user, /api/review/*, GET
+p, user, /api/review/*, DELETE
+
+p, user, /api/favorites/*, POST
+p, user, /api/favorites/*, GET
+p, user, /api/favorites/*, GET
+p, user, /api/favorites/*, DELETE
+
+p, user, /api/request/*, POST
+p, user, /api/request/*, GET
+p, user, /api/request/*, DELETE
+
+p, user, /api/report/*, POST
+p, user, /api/report/*, GET
+p, user, /api/report/*, DELETE
+
+p, user, /api/notification/*, POST
+p, user, /api/notification/*, GET

@@ -9,7 +9,7 @@ import (
 	pbreq "api_gateway/genproto/request"
 	pbrev "api_gateway/genproto/reviews"
 	pbtarf "api_gateway/genproto/tariff"
-	pbtop "api_gateway/genproto/top-properties"
+	pbtop "api_gateway/genproto/top_properties"
 	pbuser "api_gateway/genproto/user"
 	"api_gateway/internal/service"
 	"errors"

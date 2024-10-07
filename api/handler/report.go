@@ -1,9 +1,10 @@
 package handler
 
 import (
-	"net/http"
-	"github.com/gin-gonic/gin"
 	report "api_gateway/genproto/report"
+	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 // CreateReport godoc
@@ -12,16 +13,26 @@ import (
 // @Tags         report
 // @Accept       json
 // @Produce      json
+// @Security     ApiKeyAuth
 // @Param        body body report.CreateReportRequest true "Create Report Request"
 // @Success      200 {object} report.CreateReportResponse
 // @Failure      400 {object} string
-// @Router       /report/create [post]
+// @Router       /api/report/create [post]
 func (h *Handler) CreateReport(c *gin.Context) {
 	var req report.CreateReportRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
+	if req.UserId == "" || req.UserId == "string" {
+		UserId, err := getUserID(c)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+		req.UserId = UserId
+	}
+	
 	res, err := h.ReportService.Create(c, &req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -36,10 +47,11 @@ func (h *Handler) CreateReport(c *gin.Context) {
 // @Tags         report
 // @Accept       json
 // @Produce      json
+// @Security     ApiKeyAuth
 // @Param        id path string true "Report ID"
 // @Success      200 {object} report.GetReportResponse
 // @Failure      400 {object} string
-// @Router       /report/get/{id} [get]
+// @Router       /api/report/get/{id} [get]
 func (h *Handler) GetReportById(c *gin.Context) {
 	var req report.GetReportRequest
 	req.Id = c.Param("id")
@@ -61,10 +73,11 @@ func (h *Handler) GetReportById(c *gin.Context) {
 // @Tags         report
 // @Accept       json
 // @Produce      json
+// @Security     ApiKeyAuth
 // @Param        id path string true "Report ID"
 // @Success      200 {object} report.Void
 // @Failure      400 {object} string
-// @Router       /report/delete/{id} [delete]
+// @Router       /api/report/delete/{id} [delete]
 func (h *Handler) DeleteReport(c *gin.Context) {
 	var req report.DeleteReportRequest
 	req.Id = c.Param("id")

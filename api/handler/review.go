@@ -17,7 +17,7 @@ import (
 // @Param        body body reviews.CreateReviewReq true "Create Review Request"
 // @Success      200 {object} reviews.CreateReviewRes
 // @Failure      400 {object} string
-// @Router       /review/create [post]
+// @Router       /api/review/create [post]
 func (h *Handler) CreateReview(c *gin.Context) {
 	userID, err := getUserID(c)
 	if err != nil {
@@ -46,11 +46,12 @@ func (h *Handler) CreateReview(c *gin.Context) {
 // @Tags         reviews
 // @Accept       json
 // @Produce      json
+// @Security     ApiKeyAuth
 // @Param        limit query int true "Limit"
 // @Param        page query int true "Page"
 // @Success      200 {object} reviews.GetAllReviewRes
 // @Failure      400 {object} string
-// @Router       /review/getallreview [get]
+// @Router       /api/review/getallreview [get]
 func (h *Handler) GetAllReviews(c *gin.Context) {
 	var req pb.GetAllReviewReq
 	if err := c.BindQuery(&req); err != nil {
@@ -71,10 +72,11 @@ func (h *Handler) GetAllReviews(c *gin.Context) {
 // @Tags         reviews
 // @Accept       json
 // @Produce      json
+// @Security     ApiKeyAuth
 // @Param        id path string true "Review ID"
 // @Success      200 {object} reviews.GetByIdReviewRes
 // @Failure      400 {object} string
-// @Router       /review/getbyid/{id} [get]
+// @Router       /api/review/getbyid/{id} [get]
 func (h *Handler) GetReviewById(c *gin.Context) {
 	var req pb.GetByIdReviewReq
 	req.Id = c.Param("id")
@@ -96,11 +98,12 @@ func (h *Handler) GetReviewById(c *gin.Context) {
 // @Tags         reviews
 // @Accept       json
 // @Produce      json
+// @Security     ApiKeyAuth
 // @Param        id path string true "Review ID"
 // @Param        body body reviews.CreateReviewReq true "Update Review Request"
 // @Success      200 {object} reviews.CreateReviewRes
 // @Failure      400 {object} string
-// @Router       /review/update/{id} [put]
+// @Router       /api/review/update/{id} [put]
 func (h *Handler) UpdateReview(c *gin.Context) {
 	var req pb.CreateReviewReq
 	req.UserId = c.Param("id") // Assuming the user ID is passed as a path param, adjust as necessary
@@ -122,10 +125,11 @@ func (h *Handler) UpdateReview(c *gin.Context) {
 // @Tags         reviews
 // @Accept       json
 // @Produce      json
+// @Security     ApiKeyAuth
 // @Param        id path string true "Review ID"
 // @Success      200 {object} reviews.DeleteReviewRes
 // @Failure      400 {object} string
-// @Router       /review/delete/{id} [delete]
+// @Router       /api/review/delete/{id} [delete]
 func (h *Handler) DeleteReview(c *gin.Context) {
 	var req pb.DeleteReviewReq
 	req.Id = c.Param("id")

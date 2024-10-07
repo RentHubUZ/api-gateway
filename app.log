@@ -2,3 +2,6 @@ time=2024-10-04T16:12:41.581+05:00 level=ERROR msg="payment creating error: rpc 
 time=2024-10-04T16:16:04.600+05:00 level=ERROR msg="payment creating error: rpc error: code = Unknown desc = pq: invalid input syntax for type numeric: \"string\""
 time=2024-10-04T16:16:47.925+05:00 level=ERROR msg="payment creating error: rpc error: code = Unknown desc = pq: invalid input syntax for type numeric: \"string\""
 time=2024-10-04T16:36:05.144+05:00 level=ERROR msg="payment creating error: rpc error: code = Unknown desc = pq: invalid input syntax for type timestamp: \"string\""
+time=2024-10-05T16:59:56.404+05:00 level=INFO msg="GetProfile handler is invoked"
+time=2024-10-05T17:02:38.273+05:00 level=INFO msg="GetProfile handler is invoked"
+time=2024-10-05T17:02:38.277+05:00 level=INFO msg="GetProfile handler is completed"

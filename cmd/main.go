@@ -27,12 +27,11 @@ func main() {
 	services, err := service.NewServiceManager()
 
 	handler := handler.NewHandler(services, logs)
-	
+
 	controller := api.NewController(gin.Default())
 	controller.SetupRoutes(handler, logs, casbinEnforcer)
 	if err := controller.StartServer(cfg); err != nil {
 		log.Fatal(err)
 	}
-
 
 }
