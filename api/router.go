@@ -127,7 +127,7 @@ func (c *controllerImpl) SetupRoutes(h *handler.Handler, logger *slog.Logger, ca
 		user.GET("/profile",h.GetProfile)
 		user.PUT("/profile/update",h.UpdateProfile)
 		user.DELETE("/profile/delete",h.DeleteProfile)
-		user.PUT("/password",h.UpdatePassword)
+		user.PUT("/password",h.ChangePassword)
 
 	}
 }
