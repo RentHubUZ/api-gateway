@@ -27,7 +27,7 @@ func (h *Handler) GetProfile(c *gin.Context) {
 		return
 	}
 
-	h.Log.Info("user id -","Id",id)
+	h.Log.Info("user id -","Id","shamsiddinov")
 	resp, err := h.UserService.GetProfile(context.TODO(), &pb.ID{Id: id})
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
