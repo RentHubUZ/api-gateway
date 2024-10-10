@@ -3,6 +3,7 @@ package handler
 import (
 	pb "api_gateway/genproto/user"
 	"api_gateway/internal/models"
+	"context"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -26,8 +27,8 @@ func (h *Handler) GetProfile(c *gin.Context) {
 		return
 	}
 
-	h.Log.Info("user id - %s",id)
-	resp, err := h.UserService.GetProfile(c, &pb.ID{Id: id})
+	h.Log.Info("user id -","Id",id)
+	resp, err := h.UserService.GetProfile(context.TODO(), &pb.ID{Id: id})
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
