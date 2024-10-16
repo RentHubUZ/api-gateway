@@ -34,7 +34,7 @@ func (h *Handler) GetProfile(c *gin.Context) {
 		return
 	}
 
-	h.Log.Info("GetProfile handler is completed")
+	h.Log.Info("GetProfile handler is completed","resp",resp)
 	c.JSON(http.StatusOK, resp)
 }
 
