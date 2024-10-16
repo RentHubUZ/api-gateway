@@ -84,7 +84,7 @@ func (s *serviceManagerImpl) RequestService() request.RequestServiceClient {
 }
 
 func NewServiceManager() (ServiceManager, error) {
-	connUser, err := grpc.NewClient(
+	connUser, err := grpc.Dial(
 		config.Load().USER_SERVICE,
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 	)
@@ -92,7 +92,7 @@ func NewServiceManager() (ServiceManager, error) {
 		return nil, err
 	}
 
-	connAccom, err := grpc.NewClient(
+	connAccom, err := grpc.Dial(
 		config.Load().ACCOMMODATION_SERVICE,
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 	)
@@ -100,7 +100,7 @@ func NewServiceManager() (ServiceManager, error) {
 		return nil, err
 	}
 
-	connAction, err := grpc.NewClient(
+	connAction, err := grpc.Dial(
 		config.Load().ACTION_BOARD,
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 	)
@@ -118,7 +118,7 @@ func NewServiceManager() (ServiceManager, error) {
 		tarifClient:         tariff.NewTariffServiceClient(connAccom),
 		topPropertiesClient: top_properties.NewTopPropertiesServiceClient(connAccom),
 
-		// actioboardService
+		// actionboardService
 		reviewClient:       reviews.NewReviewsClient(connAction),
 		favoriteClient:     favorites.NewFavoritesClient(connAction),
 		reportClient:       report.NewReportServiceClient(connAction),
