@@ -27,11 +27,10 @@ func (h *Handler) GetProfile(c *gin.Context) {
 		return
 	}
 
-	h.Log.Info("user id -","Id","shamsiddinov")
 	resp, err := h.UserService.GetProfile(context.Background(), &pb.ID{Id: id})
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		h.Log.Error("error","",err.Error())
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
@@ -61,6 +60,7 @@ func (h *Handler) UpdateProfile(c *gin.Context) {
 
 	var req models.UserUpdate
 	if err := c.ShouldBind(&req); err != nil {
+		h.Log.Error("error","",err.Error())
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -72,6 +72,7 @@ func (h *Handler) UpdateProfile(c *gin.Context) {
 		PhoneNumber: req.PhoneNumber,
 	})
 	if err != nil {
+		h.Log.Error("error","",err.Error())
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
@@ -100,6 +101,7 @@ func (h *Handler) DeleteProfile(c *gin.Context) {
 
 	_, err = h.UserService.DeleteProfile(c, &pb.ID{Id: id})
 	if err != nil {
+		h.Log.Error("error","",err.Error())
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
@@ -130,6 +132,7 @@ func (h *Handler) ChangePassword(c *gin.Context) {
 
 	var req models.ChangePassword
 	if err := c.ShouldBind(&req); err != nil {
+		h.Log.Error("error","",err.Error())
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -140,6 +143,7 @@ func (h *Handler) ChangePassword(c *gin.Context) {
 		NewPassword: req.NewPassword,
 	})
 	if err != nil {
+		h.Log.Error("error","",err.Error())
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
