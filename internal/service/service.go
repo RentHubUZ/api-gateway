@@ -84,26 +84,25 @@ func (s *serviceManagerImpl) RequestService() request.RequestServiceClient {
 }
 
 func NewServiceManager() (ServiceManager, error) {
-	connUser, err := grpc.Dial(
-		config.Load().USER_SERVICE,
+	dialOptions := []grpc.DialOption{
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
-	)
+		grpc.WithDefaultCallOptions(
+			grpc.MaxCallRecvMsgSize(16 * 1024 * 1024),  // 16 MB
+			grpc.MaxCallSendMsgSize(16 * 1024 * 1024),  // 16 MB
+		),
+	}
+
+	connUser, err := grpc.Dial(config.Load().USER_SERVICE, dialOptions...)
 	if err != nil {
 		return nil, err
 	}
 
-	connAccom, err := grpc.Dial(
-		config.Load().ACCOMMODATION_SERVICE,
-		grpc.WithTransportCredentials(insecure.NewCredentials()),
-	)
+	connAccom, err := grpc.Dial(config.Load().ACCOMMODATION_SERVICE, dialOptions...)
 	if err != nil {
 		return nil, err
 	}
 
-	connAction, err := grpc.Dial(
-		config.Load().ACTION_BOARD,
-		grpc.WithTransportCredentials(insecure.NewCredentials()),
-	)
+	connAction, err := grpc.Dial(config.Load().ACTION_BOARD, dialOptions...)
 	if err != nil {
 		return nil, err
 	}

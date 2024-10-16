@@ -46,3 +46,5 @@ p, user, /api/report/*, DELETE
 
 p, user, /api/notification/*, POST
 p, user, /api/notification/*, GET
+
+p, user, /api/upload/*, POST

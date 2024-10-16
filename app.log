@@ -8,3 +8,6 @@ time=2024-10-05T17:02:38.277+05:00 level=INFO msg="GetProfile handler is complet
 time=2024-10-16T12:41:25.351+05:00 level=INFO msg="GetProfile handler is invoked"
 time=2024-10-16T12:41:25.351+05:00 level=INFO msg="user id -" Id=shamsiddinov
 time=2024-10-16T12:41:25.353+05:00 level=INFO msg="GetProfile handler is completed"
+time=2024-10-16T13:04:11.480+05:00 level=INFO msg="GetProfile handler is invoked"
+time=2024-10-16T13:04:11.480+05:00 level=INFO msg="user id -" Id=shamsiddinov
+time=2024-10-16T13:04:11.485+05:00 level=INFO msg="GetProfile handler is completed"
