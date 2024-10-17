@@ -19,7 +19,7 @@ import (
 // @Param        body body tariff.CreateTariffReq true "Create Tariff Request"
 // @Success      200 {object} tariff.CreateTariffRes
 // @Failure      400 {object} string
-// @Router       /api/tarif/createtarif [post]
+// @Router       /tarif/createtarif [post]
 func (h *Handler) CreateTarif(c *gin.Context) {
 	var tarif pbtarif.CreateTariffReq
 	if err := c.ShouldBindJSON(&tarif); err != nil {
@@ -48,7 +48,7 @@ func (h *Handler) CreateTarif(c *gin.Context) {
 // @Param        body body tariff.UpdateTariffReq true "Update Tariff Request"
 // @Success      200 {object} tariff.UpdateTariffRes
 // @Failure      400 {object} string
-// @Router       /api/tarif/updatetarif [put]
+// @Router       /tarif/updatetarif [put]
 func (h *Handler) UpdateTarif(c *gin.Context) {
 	var tarifupdate pbtarif.UpdateTariffReq
 	if err := c.ShouldBindJSON(&tarifupdate); err != nil {
@@ -77,7 +77,7 @@ func (h *Handler) UpdateTarif(c *gin.Context) {
 // @Param        tarif_id path string true "Tariff ID"
 // @Success      200 {object} tariff.GetTariffRes
 // @Failure      400 {object} string
-// @Router       /api/tarif/getbyidtarif/{tarif_id} [get]
+// @Router       /tarif/getbyidtarif/{tarif_id} [get]
 func (h *Handler) GetByIdTarif(c *gin.Context) {
 	id := c.Param("tarif_id")
 
@@ -106,7 +106,7 @@ func (h *Handler) GetByIdTarif(c *gin.Context) {
 // @Param        page  path int true "Page"
 // @Success      200 {object} tariff.GetAllTariffRes
 // @Failure      400 {object} string
-// @Router       /api/tarif/getalltarif/{limit}/{page} [get]
+// @Router       /tarif/getalltarif/{limit}/{page} [get]
 func (h *Handler) GetAllTarif(c *gin.Context) {
 	limitStr := c.Param("limit")
 	limit, err := strconv.Atoi(limitStr)
@@ -150,7 +150,7 @@ func (h *Handler) GetAllTarif(c *gin.Context) {
 // @Param        tarif_id path string true "Tariff ID"
 // @Success      200 {object} tariff.DeleteTariffRes
 // @Failure      400 {object} string
-// @Router       /api/tarif/deletetarif/{tarif_id} [delete]
+// @Router       /tarif/deletetarif/{tarif_id} [delete]
 func (h *Handler) DeleteTarif(c *gin.Context) {
 	id := c.Param("tarif_id")
 

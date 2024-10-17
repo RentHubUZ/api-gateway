@@ -17,7 +17,7 @@ import (
 // @Param        body body favorites.CreateFavoritesReq true "Create Favorite Request"
 // @Success      200 {object} favorites.CreateFavoritesRes
 // @Failure      400 {object} string
-// @Router       /api/favorites/create [post]
+// @Router       /favorites/create [post]
 func (h *Handler) CreateFavorites(c *gin.Context) {
 	var req favorites.CreateFavoritesReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -43,7 +43,7 @@ func (h *Handler) CreateFavorites(c *gin.Context) {
 // @Param        id path string true "Favorite ID"
 // @Success      200 {object} favorites.DeleteFavoritesRes
 // @Failure      400 {object} string
-// @Router       /api/favorites/delete/{id} [delete]
+// @Router       /favorites/delete/{id} [delete]
 func (h *Handler) DeleteFavorites(c *gin.Context) {
 	var req favorites.DeleteFavoritesReq
 	req.Id = c.Param("id")
@@ -70,7 +70,7 @@ func (h *Handler) DeleteFavorites(c *gin.Context) {
 // @Param        page query int true "Page"
 // @Success      200 {object} favorites.GetAllFavoritesRes
 // @Failure      400 {object} string
-// @Router       /api/favorites/getall [get]
+// @Router       /favorites/getall [get]
 func (h *Handler) GetAllFavorites(c *gin.Context) {
 	var req favorites.GetAllFavoritesReq
 	if err := c.ShouldBindQuery(&req); err != nil {
@@ -95,7 +95,7 @@ func (h *Handler) GetAllFavorites(c *gin.Context) {
 // @Param        id path string true "Favorite ID"
 // @Success      200 {object} favorites.GetByIdFavoritesRes
 // @Failure      400 {object} string
-// @Router       /api/favorites/getbyid/{id} [get]
+// @Router       /favorites/getbyid/{id} [get]
 func (h *Handler) GetByIdFavorites(c *gin.Context) {
 	var req favorites.GetByIdFavoritesReq
 	req.Id = c.Param("id")

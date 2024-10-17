@@ -17,7 +17,7 @@ import (
 // @Param        body body request.CreateRequestRequest true "Create Request Request"
 // @Success      200 {object} request.CreateRequestResponse
 // @Failure      400 {object} string
-// @Router       /api/request/create [post]
+// @Router       /request/create [post]
 func (h *Handler) CreateRequest(c *gin.Context) {
 	var req request.CreateRequestRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -32,7 +32,7 @@ func (h *Handler) CreateRequest(c *gin.Context) {
 		}
 		req.UserId = UserId
 	}
-	
+
 	res, err := h.RequestService.CreateRequest(c, &req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -51,7 +51,7 @@ func (h *Handler) CreateRequest(c *gin.Context) {
 // @Param        id path string true "Request ID"
 // @Success      200 {object} request.GetRequestResponse
 // @Failure      400 {object} string
-// @Router       /api/request/getbyid/{id} [get]
+// @Router       /request/getbyid/{id} [get]
 func (h *Handler) GetRequestById(c *gin.Context) {
 	var req request.GetRequestRequest
 	req.Id = c.Param("id")
@@ -77,7 +77,7 @@ func (h *Handler) GetRequestById(c *gin.Context) {
 // @Param        id path string true "Request ID"
 // @Success      200 {object} request.Void
 // @Failure      400 {object} string
-// @Router       /api/request/delete/{id} [delete]
+// @Router       /request/delete/{id} [delete]
 func (h *Handler) DeleteRequest(c *gin.Context) {
 	var req request.Request
 	req.Id = c.Param("id")

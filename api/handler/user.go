@@ -16,7 +16,7 @@ import (
 // @Success 200 {object} user.Profile
 // @Failure 401 {object} string
 // @Failure 500 {object} string
-// @Router /api/user/profile [get]
+// @Router       /user/profile [get]
 func (h *Handler) GetProfile(c *gin.Context) {
 	h.Log.Info("GetProfile handler is invoked")
 
@@ -47,7 +47,7 @@ func (h *Handler) GetProfile(c *gin.Context) {
 // @Failure 400 {object} string
 // @Failure 401 {object} string
 // @Failure 500 {object} string
-// @Router /api/user/profile/update [put]
+// @Router       /user/profile/update [put]
 func (h *Handler) UpdateProfile(c *gin.Context) {
 	h.Log.Info("UpdateProfile handler is invoked")
 
@@ -88,7 +88,7 @@ func (h *Handler) UpdateProfile(c *gin.Context) {
 // @Success 200 {object} string
 // @Failure 401 {object} string
 // @Failure 500 {object} string
-// @Router /api/user/profile/delete [delete]
+// @Router       /user/profile/delete [delete]
 func (h *Handler) DeleteProfile(c *gin.Context) {
 	h.Log.Info("DeleteProfile handler is invoked")
 
@@ -119,7 +119,7 @@ func (h *Handler) DeleteProfile(c *gin.Context) {
 // @Failure 400 {object} string
 // @Failure 401 {object} string
 // @Failure 500 {object} string
-// @Router /api/user/password [put]
+// @Router       /user/password [put]
 func (h *Handler) ChangePassword(c *gin.Context) {
 	h.Log.Info("ChangePassword handler is invoked")
 

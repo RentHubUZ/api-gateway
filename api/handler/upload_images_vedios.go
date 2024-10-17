@@ -24,7 +24,7 @@ import (
 // @Success 200 {object} string
 // @Failure 400 {object} string
 // @Failure 500 {object} string
-// @Router /api/upload/imagesandvideo [post]
+// @Router       /upload/imagesandvideo [post]
 func (h Handler) UploadMedia(c *gin.Context) {
 	file, err := c.FormFile("file")
 	if err != nil {

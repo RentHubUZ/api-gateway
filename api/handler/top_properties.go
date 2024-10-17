@@ -20,7 +20,7 @@ import (
 // @Param        body body models.Top_Properties true "Top Properties"
 // @Success      200 {object} top_properties.CreateTopPropertyRes
 // @Failure      400 {object} string
-// @Router       /api/topproperties/createtopproperties [post]
+// @Router       /topproperties/createtopproperties [post]
 func (h *Handler) CreateTopProperties(c *gin.Context) {
 	userId, exists := c.Get("user_id")
 	if !exists {
@@ -63,7 +63,7 @@ func (h *Handler) CreateTopProperties(c *gin.Context) {
 // @Param        body body models.Top_UpdateProperties true "Update Top Properties"
 // @Success      200 {object} top_properties.UpdateTopPropertyRes
 // @Failure      400 {object} string
-// @Router       /api/topproperties/updatetopproperties [put]
+// @Router       /topproperties/updatetopproperties [put]
 func (h *Handler) UpdateTopProperties(c *gin.Context) {
 	userId, exists := c.Get("user_id")
 	if !exists {
@@ -109,7 +109,7 @@ func (h *Handler) UpdateTopProperties(c *gin.Context) {
 // @Param        top_properties_id path string true "Top Properties ID"
 // @Success      200 {object} top_properties.GetTopPropertyRes
 // @Failure      400 {object} string
-// @Router       /api/topproperties/getbyidtopproperties/{top_properties_id} [get]
+// @Router       /topproperties/getbyidtopproperties/{top_properties_id} [get]
 func (h *Handler) GetByIdTopProperties(c *gin.Context) {
 	id := c.Param("top_properties_id")
 
@@ -138,7 +138,7 @@ func (h *Handler) GetByIdTopProperties(c *gin.Context) {
 // @Param        page  path int true "Page"
 // @Success      200 {object} top_properties.GetAllTopPropertyRes
 // @Failure      400 {object} string
-// @Router       /api/topproperties/getalltopproperties/{limit}/{page} [get]
+// @Router       /topproperties/getalltopproperties/{limit}/{page} [get]
 func (h *Handler) GetAllTopProperties(c *gin.Context) {
 	limitStr := c.Param("limit")
 	limit, err := strconv.Atoi(limitStr)
@@ -182,7 +182,7 @@ func (h *Handler) GetAllTopProperties(c *gin.Context) {
 // @Param        top_properties_id path string true "Top Properties ID"
 // @Success      200 {object} top_properties.DeleteTopPropertyRes
 // @Failure      400 {object} string
-// @Router       /api/topproperties/deletetopproperties/{top_properties_id} [delete]
+// @Router       /topproperties/deletetopproperties/{top_properties_id} [delete]
 func (h *Handler) DeleteTopProperties(c *gin.Context) {
 	id := c.Param("top_properties_id")
 

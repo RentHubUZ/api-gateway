@@ -15,7 +15,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/api/favorites/create": {
+        "/favorites/create": {
             "post": {
                 "security": [
                     {
@@ -60,7 +60,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/favorites/delete/{id}": {
+        "/favorites/delete/{id}": {
             "delete": {
                 "security": [
                     {
@@ -103,7 +103,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/favorites/getall": {
+        "/favorites/getall": {
             "get": {
                 "security": [
                     {
@@ -153,7 +153,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/favorites/getbyid/{id}": {
+        "/favorites/getbyid/{id}": {
             "get": {
                 "security": [
                     {
@@ -196,7 +196,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/notification/create": {
+        "/notification/create": {
             "post": {
                 "security": [
                     {
@@ -241,7 +241,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/notification/get/{id}": {
+        "/notification/get/{id}": {
             "get": {
                 "security": [
                     {
@@ -284,7 +284,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/payment/createpayment": {
+        "/payment/createpayment": {
             "post": {
                 "security": [
                     {
@@ -329,7 +329,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/payment/deletepayment/{payment_id}": {
+        "/payment/deletepayment/{payment_id}": {
             "delete": {
                 "security": [
                     {
@@ -372,7 +372,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/payment/getallpayment/{limit}/{page}": {
+        "/payment/getallpayment/{limit}/{page}": {
             "get": {
                 "security": [
                     {
@@ -422,7 +422,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/payment/getbyidpayment/{payment_id}": {
+        "/payment/getbyidpayment/{payment_id}": {
             "get": {
                 "security": [
                     {
@@ -465,7 +465,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/properties/propertiescreate": {
+        "/properties/propertiescreate": {
             "post": {
                 "security": [
                     {
@@ -516,7 +516,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/properties/propertiesdelete/{properties_id}": {
+        "/properties/propertiesdelete/{properties_id}": {
             "delete": {
                 "security": [
                     {
@@ -559,7 +559,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/properties/propertiesgetall/{limit}/{page}": {
+        "/properties/propertiesgetall/{limit}/{page}": {
             "get": {
                 "security": [
                     {
@@ -615,7 +615,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/properties/propertiesgetbyid/{properties_id}": {
+        "/properties/propertiesgetbyid/{properties_id}": {
             "get": {
                 "security": [
                     {
@@ -658,7 +658,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/properties/propertiesupdate": {
+        "/properties/propertiesupdate": {
             "put": {
                 "security": [
                     {
@@ -709,7 +709,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/report/create": {
+        "/report/create": {
             "post": {
                 "security": [
                     {
@@ -754,7 +754,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/report/delete/{id}": {
+        "/report/delete/{id}": {
             "delete": {
                 "security": [
                     {
@@ -797,7 +797,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/report/get/{id}": {
+        "/report/get/{id}": {
             "get": {
                 "security": [
                     {
@@ -840,7 +840,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/request/create": {
+        "/request/create": {
             "post": {
                 "security": [
                     {
@@ -885,7 +885,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/request/delete/{id}": {
+        "/request/delete/{id}": {
             "delete": {
                 "security": [
                     {
@@ -928,7 +928,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/request/getbyid/{id}": {
+        "/request/getbyid/{id}": {
             "get": {
                 "security": [
                     {
@@ -971,7 +971,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/review/create": {
+        "/review/create": {
             "post": {
                 "security": [
                     {
@@ -1016,7 +1016,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/review/delete/{id}": {
+        "/review/delete/{id}": {
             "delete": {
                 "security": [
                     {
@@ -1059,7 +1059,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/review/getallreview": {
+        "/review/getallreview": {
             "get": {
                 "security": [
                     {
@@ -1109,7 +1109,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/review/getbyid/{id}": {
+        "/review/getbyid/{id}": {
             "get": {
                 "security": [
                     {
@@ -1152,7 +1152,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/review/update/{id}": {
+        "/review/update/{id}": {
             "put": {
                 "security": [
                     {
@@ -1204,7 +1204,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/tarif/createtarif": {
+        "/tarif/createtarif": {
             "post": {
                 "security": [
                     {
@@ -1249,7 +1249,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/tarif/deletetarif/{tarif_id}": {
+        "/tarif/deletetarif/{tarif_id}": {
             "delete": {
                 "security": [
                     {
@@ -1292,7 +1292,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/tarif/getalltarif/{limit}/{page}": {
+        "/tarif/getalltarif/{limit}/{page}": {
             "get": {
                 "security": [
                     {
@@ -1342,7 +1342,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/tarif/getbyidtarif/{tarif_id}": {
+        "/tarif/getbyidtarif/{tarif_id}": {
             "get": {
                 "security": [
                     {
@@ -1385,7 +1385,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/tarif/updatetarif": {
+        "/tarif/updatetarif": {
             "put": {
                 "security": [
                     {
@@ -1430,7 +1430,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/topproperties/createtopproperties": {
+        "/topproperties/createtopproperties": {
             "post": {
                 "security": [
                     {
@@ -1475,7 +1475,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/topproperties/deletetopproperties/{top_properties_id}": {
+        "/topproperties/deletetopproperties/{top_properties_id}": {
             "delete": {
                 "security": [
                     {
@@ -1518,7 +1518,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/topproperties/getalltopproperties/{limit}/{page}": {
+        "/topproperties/getalltopproperties/{limit}/{page}": {
             "get": {
                 "security": [
                     {
@@ -1568,7 +1568,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/topproperties/getbyidtopproperties/{top_properties_id}": {
+        "/topproperties/getbyidtopproperties/{top_properties_id}": {
             "get": {
                 "security": [
                     {
@@ -1611,7 +1611,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/topproperties/updatetopproperties": {
+        "/topproperties/updatetopproperties": {
             "put": {
                 "security": [
                     {
@@ -1656,7 +1656,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/upload/imagesandvideo": {
+        "/upload/imagesandvideo": {
             "post": {
                 "security": [
                     {
@@ -1705,7 +1705,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/user/password": {
+        "/user/password": {
             "put": {
                 "security": [
                     {
@@ -1756,7 +1756,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/user/profile": {
+        "/user/profile": {
             "get": {
                 "security": [
                     {
@@ -1790,7 +1790,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/user/profile/delete": {
+        "/user/profile/delete": {
             "delete": {
                 "security": [
                     {
@@ -1824,7 +1824,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/user/profile/update": {
+        "/user/profile/update": {
             "put": {
                 "security": [
                     {

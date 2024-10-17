@@ -22,7 +22,7 @@ import (
 // @Success      202 {object} accommodation.CreateHouseRes
 // @Failure      400 {object} string
 // @Failure      500 {object} string
-// @Router       /api/properties/propertiescreate [post]
+// @Router       /properties/propertiescreate [post]
 func (h *Handler) CreateHouse(c *gin.Context) {
 	userId, exists := c.Get("user_id")
 	if !exists {
@@ -79,7 +79,7 @@ func (h *Handler) CreateHouse(c *gin.Context) {
 // @Success      202 {object} accommodation.UpdateHouseRes
 // @Failure      400 {object} string
 // @Failure      500 {object} string
-// @Router       /api/properties/propertiesupdate [put]
+// @Router       /properties/propertiesupdate [put]
 func (h *Handler) UpdateHouse(c *gin.Context) {
 	userId, exists := c.Get("user_id")
 	if !exists {
@@ -138,7 +138,7 @@ func (h *Handler) UpdateHouse(c *gin.Context) {
 // @Success      202 {object} accommodation.GetAllHouseRes
 // @Failure      400 {object} string
 // @Failure      500 {object} string
-// @Router       /api/properties/propertiesgetall/{limit}/{page} [get]
+// @Router       /properties/propertiesgetall/{limit}/{page} [get]
 func (h *Handler) GetAllHouse(c *gin.Context) {
 	limitStr := c.Param("limit")
 	limit, err := strconv.Atoi(limitStr)
@@ -182,7 +182,7 @@ func (h *Handler) GetAllHouse(c *gin.Context) {
 // @Param        properties_id path string true "Property ID"
 // @Success      202 {object} accommodation.GetByIdHouseRes
 // @Failure      500 {object} string
-// @Router       /api/properties/propertiesgetbyid/{properties_id} [get]
+// @Router       /properties/propertiesgetbyid/{properties_id} [get]
 func (h *Handler) GetByIdHouse(c *gin.Context) {
 	id := c.Param("properties_id")
 
@@ -210,7 +210,7 @@ func (h *Handler) GetByIdHouse(c *gin.Context) {
 // @Param        properties_id path string true "Property ID"
 // @Success      202 {object} accommodation.DeleteHouseRes
 // @Failure      500 {object} string
-// @Router       /api/properties/propertiesdelete/{properties_id} [delete]
+// @Router       /properties/propertiesdelete/{properties_id} [delete]
 func (h *Handler) DeleteHouse(c *gin.Context) {
 	id := c.Param("properties_id")
 

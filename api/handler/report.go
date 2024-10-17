@@ -17,7 +17,7 @@ import (
 // @Param        body body report.CreateReportRequest true "Create Report Request"
 // @Success      200 {object} report.CreateReportResponse
 // @Failure      400 {object} string
-// @Router       /api/report/create [post]
+// @Router       /report/create [post]
 func (h *Handler) CreateReport(c *gin.Context) {
 	var req report.CreateReportRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -32,7 +32,7 @@ func (h *Handler) CreateReport(c *gin.Context) {
 		}
 		req.UserId = UserId
 	}
-	
+
 	res, err := h.ReportService.Create(c, &req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -51,7 +51,7 @@ func (h *Handler) CreateReport(c *gin.Context) {
 // @Param        id path string true "Report ID"
 // @Success      200 {object} report.GetReportResponse
 // @Failure      400 {object} string
-// @Router       /api/report/get/{id} [get]
+// @Router       /report/get/{id} [get]
 func (h *Handler) GetReportById(c *gin.Context) {
 	var req report.GetReportRequest
 	req.Id = c.Param("id")
@@ -77,7 +77,7 @@ func (h *Handler) GetReportById(c *gin.Context) {
 // @Param        id path string true "Report ID"
 // @Success      200 {object} report.Void
 // @Failure      400 {object} string
-// @Router       /api/report/delete/{id} [delete]
+// @Router       /report/delete/{id} [delete]
 func (h *Handler) DeleteReport(c *gin.Context) {
 	var req report.DeleteReportRequest
 	req.Id = c.Param("id")

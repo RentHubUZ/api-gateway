@@ -7,7 +7,7 @@
         "version": "1.0"
     },
     "paths": {
-        "/api/favorites/create": {
+        "/favorites/create": {
             "post": {
                 "security": [
                     {
@@ -52,7 +52,7 @@
                 }
             }
         },
-        "/api/favorites/delete/{id}": {
+        "/favorites/delete/{id}": {
             "delete": {
                 "security": [
                     {
@@ -95,7 +95,7 @@
                 }
             }
         },
-        "/api/favorites/getall": {
+        "/favorites/getall": {
             "get": {
                 "security": [
                     {
@@ -145,7 +145,7 @@
                 }
             }
         },
-        "/api/favorites/getbyid/{id}": {
+        "/favorites/getbyid/{id}": {
             "get": {
                 "security": [
                     {
@@ -188,7 +188,7 @@
                 }
             }
         },
-        "/api/notification/create": {
+        "/notification/create": {
             "post": {
                 "security": [
                     {
@@ -233,7 +233,7 @@
                 }
             }
         },
-        "/api/notification/get/{id}": {
+        "/notification/get/{id}": {
             "get": {
                 "security": [
                     {
@@ -276,7 +276,7 @@
                 }
             }
         },
-        "/api/payment/createpayment": {
+        "/payment/createpayment": {
             "post": {
                 "security": [
                     {
@@ -321,7 +321,7 @@
                 }
             }
         },
-        "/api/payment/deletepayment/{payment_id}": {
+        "/payment/deletepayment/{payment_id}": {
             "delete": {
                 "security": [
                     {
@@ -364,7 +364,7 @@
                 }
             }
         },
-        "/api/payment/getallpayment/{limit}/{page}": {
+        "/payment/getallpayment/{limit}/{page}": {
             "get": {
                 "security": [
                     {
@@ -414,7 +414,7 @@
                 }
             }
         },
-        "/api/payment/getbyidpayment/{payment_id}": {
+        "/payment/getbyidpayment/{payment_id}": {
             "get": {
                 "security": [
                     {
@@ -457,7 +457,7 @@
                 }
             }
         },
-        "/api/properties/propertiescreate": {
+        "/properties/propertiescreate": {
             "post": {
                 "security": [
                     {
@@ -508,7 +508,7 @@
                 }
             }
         },
-        "/api/properties/propertiesdelete/{properties_id}": {
+        "/properties/propertiesdelete/{properties_id}": {
             "delete": {
                 "security": [
                     {
@@ -551,7 +551,7 @@
                 }
             }
         },
-        "/api/properties/propertiesgetall/{limit}/{page}": {
+        "/properties/propertiesgetall/{limit}/{page}": {
             "get": {
                 "security": [
                     {
@@ -607,7 +607,7 @@
                 }
             }
         },
-        "/api/properties/propertiesgetbyid/{properties_id}": {
+        "/properties/propertiesgetbyid/{properties_id}": {
             "get": {
                 "security": [
                     {
@@ -650,7 +650,7 @@
                 }
             }
         },
-        "/api/properties/propertiesupdate": {
+        "/properties/propertiesupdate": {
             "put": {
                 "security": [
                     {
@@ -701,7 +701,7 @@
                 }
             }
         },
-        "/api/report/create": {
+        "/report/create": {
             "post": {
                 "security": [
                     {
@@ -746,7 +746,7 @@
                 }
             }
         },
-        "/api/report/delete/{id}": {
+        "/report/delete/{id}": {
             "delete": {
                 "security": [
                     {
@@ -789,7 +789,7 @@
                 }
             }
         },
-        "/api/report/get/{id}": {
+        "/report/get/{id}": {
             "get": {
                 "security": [
                     {
@@ -832,7 +832,7 @@
                 }
             }
         },
-        "/api/request/create": {
+        "/request/create": {
             "post": {
                 "security": [
                     {
@@ -877,7 +877,7 @@
                 }
             }
         },
-        "/api/request/delete/{id}": {
+        "/request/delete/{id}": {
             "delete": {
                 "security": [
                     {
@@ -920,7 +920,7 @@
                 }
             }
         },
-        "/api/request/getbyid/{id}": {
+        "/request/getbyid/{id}": {
             "get": {
                 "security": [
                     {
@@ -963,7 +963,7 @@
                 }
             }
         },
-        "/api/review/create": {
+        "/review/create": {
             "post": {
                 "security": [
                     {
@@ -1008,7 +1008,7 @@
                 }
             }
         },
-        "/api/review/delete/{id}": {
+        "/review/delete/{id}": {
             "delete": {
                 "security": [
                     {
@@ -1051,7 +1051,7 @@
                 }
             }
         },
-        "/api/review/getallreview": {
+        "/review/getallreview": {
             "get": {
                 "security": [
                     {
@@ -1101,7 +1101,7 @@
                 }
             }
         },
-        "/api/review/getbyid/{id}": {
+        "/review/getbyid/{id}": {
             "get": {
                 "security": [
                     {
@@ -1144,7 +1144,7 @@
                 }
             }
         },
-        "/api/review/update/{id}": {
+        "/review/update/{id}": {
             "put": {
                 "security": [
                     {
@@ -1196,7 +1196,7 @@
                 }
             }
         },
-        "/api/tarif/createtarif": {
+        "/tarif/createtarif": {
             "post": {
                 "security": [
                     {
@@ -1241,7 +1241,7 @@
                 }
             }
         },
-        "/api/tarif/deletetarif/{tarif_id}": {
+        "/tarif/deletetarif/{tarif_id}": {
             "delete": {
                 "security": [
                     {
@@ -1284,7 +1284,7 @@
                 }
             }
         },
-        "/api/tarif/getalltarif/{limit}/{page}": {
+        "/tarif/getalltarif/{limit}/{page}": {
             "get": {
                 "security": [
                     {
@@ -1334,7 +1334,7 @@
                 }
             }
         },
-        "/api/tarif/getbyidtarif/{tarif_id}": {
+        "/tarif/getbyidtarif/{tarif_id}": {
             "get": {
                 "security": [
                     {
@@ -1377,7 +1377,7 @@
                 }
             }
         },
-        "/api/tarif/updatetarif": {
+        "/tarif/updatetarif": {
             "put": {
                 "security": [
                     {
@@ -1422,7 +1422,7 @@
                 }
             }
         },
-        "/api/topproperties/createtopproperties": {
+        "/topproperties/createtopproperties": {
             "post": {
                 "security": [
                     {
@@ -1467,7 +1467,7 @@
                 }
             }
         },
-        "/api/topproperties/deletetopproperties/{top_properties_id}": {
+        "/topproperties/deletetopproperties/{top_properties_id}": {
             "delete": {
                 "security": [
                     {
@@ -1510,7 +1510,7 @@
                 }
             }
         },
-        "/api/topproperties/getalltopproperties/{limit}/{page}": {
+        "/topproperties/getalltopproperties/{limit}/{page}": {
             "get": {
                 "security": [
                     {
@@ -1560,7 +1560,7 @@
                 }
             }
         },
-        "/api/topproperties/getbyidtopproperties/{top_properties_id}": {
+        "/topproperties/getbyidtopproperties/{top_properties_id}": {
             "get": {
                 "security": [
                     {
@@ -1603,7 +1603,7 @@
                 }
             }
         },
-        "/api/topproperties/updatetopproperties": {
+        "/topproperties/updatetopproperties": {
             "put": {
                 "security": [
                     {
@@ -1648,7 +1648,7 @@
                 }
             }
         },
-        "/api/upload/imagesandvideo": {
+        "/upload/imagesandvideo": {
             "post": {
                 "security": [
                     {
@@ -1697,7 +1697,7 @@
                 }
             }
         },
-        "/api/user/password": {
+        "/user/password": {
             "put": {
                 "security": [
                     {
@@ -1748,7 +1748,7 @@
                 }
             }
         },
-        "/api/user/profile": {
+        "/user/profile": {
             "get": {
                 "security": [
                     {
@@ -1782,7 +1782,7 @@
                 }
             }
         },
-        "/api/user/profile/delete": {
+        "/user/profile/delete": {
             "delete": {
                 "security": [
                     {
@@ -1816,7 +1816,7 @@
                 }
             }
         },
-        "/api/user/profile/update": {
+        "/user/profile/update": {
             "put": {
                 "security": [
                     {

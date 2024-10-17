@@ -45,10 +45,9 @@ func (c *controllerImpl) StartServer(cfg *config.Config) error {
 func (c *controllerImpl) SetupRoutes(h *handler.Handler, logger *slog.Logger, casbinEnforcer *casbin.Enforcer) {
 	c.Router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	c.Router.Use(middleware.CORSMiddleware())
-	router := c.Router.Group("/api")
 	c.Router.Use(middleware.PermissionMiddleware(casbinEnforcer))
 
-	properties := router.Group("/properties")
+	properties := c.Router.Group("/properties")
 	{
 		properties.POST("/propertiescreate", h.CreateHouse)
 		properties.PUT("/propertiesupdate", h.UpdateHouse)
@@ -57,7 +56,7 @@ func (c *controllerImpl) SetupRoutes(h *handler.Handler, logger *slog.Logger, ca
 		properties.DELETE("/propertiesdelete/:properties_id", h.DeleteHouse)
 	}
 
-	payment := router.Group("/payment")
+	payment := c.Router.Group("/payment")
 	{
 		payment.POST("/createpayment", h.CreatePayment)
 		payment.GET("/getbyidpayment/:payment_id", h.GetPayment)
@@ -65,7 +64,7 @@ func (c *controllerImpl) SetupRoutes(h *handler.Handler, logger *slog.Logger, ca
 		payment.DELETE("/deletepayment/:payment_id", h.DeletePayment)
 	}
 
-	tarif := router.Group("/tarif")
+	tarif := c.Router.Group("/tarif")
 	{
 		tarif.POST("/createtarif", h.CreateTarif)
 		tarif.PUT("/updatetarif", h.UpdateTarif)
@@ -74,7 +73,7 @@ func (c *controllerImpl) SetupRoutes(h *handler.Handler, logger *slog.Logger, ca
 		tarif.DELETE("/deletetarif/:tarif_id", h.DeleteTarif)
 	}
 
-	topProperties := router.Group("/topproperties")
+	topProperties := c.Router.Group("/topproperties")
 	{
 		topProperties.POST("/createtopproperties", h.CreateTopProperties)
 		topProperties.PUT("/updatetopproperties", h.UpdateTopProperties)
@@ -82,14 +81,14 @@ func (c *controllerImpl) SetupRoutes(h *handler.Handler, logger *slog.Logger, ca
 		topProperties.GET("/getalltopproperties/:limit/:page", h.GetAllTopProperties)
 		topProperties.DELETE("/deletetopproperties/:top_properties_id", h.DeleteTopProperties)
 	}
-	review := router.Group("/review")
+	review := c.Router.Group("/review")
 	{
 		review.POST("/create", h.CreateReview)
 		review.GET("/getall", h.GetAllReviews)
 		review.GET("/getbyid/:id", h.GetReviewById)
 		review.DELETE("/delete/:id", h.DeleteReview)
 	}
-	favorites := router.Group("/favorites")
+	favorites := c.Router.Group("/favorites")
 	{
 		favorites.POST("/create", h.CreateFavorites)
 		favorites.GET("/getall", h.GetAllFavorites)
@@ -97,32 +96,32 @@ func (c *controllerImpl) SetupRoutes(h *handler.Handler, logger *slog.Logger, ca
 		favorites.DELETE("/delete/:id", h.DeleteFavorites)
 	}
 
-	request := router.Group("/request")
+	request := c.Router.Group("/request")
 	{
 		request.POST("/create", h.CreateRequest)
 		request.GET("/getbyid/:id", h.GetRequestById)
 		request.DELETE("/delete/:id", h.DeleteRequest)
 	}
 
-	report := router.Group("/report")
+	report := c.Router.Group("/report")
 	{
 		report.POST("/create", h.CreateReport)
 		report.GET("/getbyid/:id", h.GetReportById)
 		report.DELETE("/delete/:id", h.DeleteReport)
 	}
 
-	notification := router.Group("/notification")
+	notification := c.Router.Group("/notification")
 	{
 		notification.POST("/create", h.CreateNotification)
 		notification.GET("/get/:id", h.GetNotification)
 	}
 
-	UploadMedia := router.Group("/upload")
+	UploadMedia := c.Router.Group("/upload")
 	{
 		UploadMedia.POST("/imagesandvideo",h.UploadMedia)
 	}
 	
-	user := router.Group("/user")
+	user := c.Router.Group("/user")
 	{
 		user.GET("/profile",h.GetProfile)
 		user.PUT("/profile/update",h.UpdateProfile)

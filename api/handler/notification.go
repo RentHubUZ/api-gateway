@@ -17,7 +17,7 @@ import (
 // @Param notification body notification.CreateNotificationRequest true "Create Notification"
 // @Success 200 {object} notification.CreateNotificationResponse
 // @Failure 400 {object} string
-// @Router /api/notification/create [post]
+// @Router       /notification/create [post]
 func (h *Handler) CreateNotification(c *gin.Context) {
 	var req pb.CreateNotificationRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -52,7 +52,7 @@ func (h *Handler) CreateNotification(c *gin.Context) {
 // @Param id path string true "Notification ID"
 // @Success 200 {object} notification.GetNotificationResponse
 // @Failure 500 {object} string
-// @Router /api/notification/get/{id} [get]
+// @Router       /notification/get/{id} [get]
 func (h *Handler) GetNotification(c *gin.Context) {
 	id := c.Param("id")
 

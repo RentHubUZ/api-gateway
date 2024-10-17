@@ -671,7 +671,7 @@ info:
   title: Api Gateway
   version: "1.0"
 paths:
-  /api/favorites/create:
+  /favorites/create:
     post:
       consumes:
       - application/json
@@ -699,7 +699,7 @@ paths:
       summary: Create a new favorite
       tags:
       - favorites
-  /api/favorites/delete/{id}:
+  /favorites/delete/{id}:
     delete:
       consumes:
       - application/json
@@ -726,7 +726,7 @@ paths:
       summary: Delete a favorite
       tags:
       - favorites
-  /api/favorites/getall:
+  /favorites/getall:
     get:
       consumes:
       - application/json
@@ -758,7 +758,7 @@ paths:
       summary: Get all favorites
       tags:
       - favorites
-  /api/favorites/getbyid/{id}:
+  /favorites/getbyid/{id}:
     get:
       consumes:
       - application/json
@@ -785,7 +785,7 @@ paths:
       summary: Get a favorite by ID
       tags:
       - favorites
-  /api/notification/create:
+  /notification/create:
     post:
       consumes:
       - application/json
@@ -813,7 +813,7 @@ paths:
       summary: Create a new notification
       tags:
       - notifications
-  /api/notification/get/{id}:
+  /notification/get/{id}:
     get:
       consumes:
       - application/json
@@ -840,7 +840,7 @@ paths:
       summary: Get a notification by ID
       tags:
       - notifications
-  /api/payment/createpayment:
+  /payment/createpayment:
     post:
       consumes:
       - application/json
@@ -868,7 +868,7 @@ paths:
       summary: Create a new payment
       tags:
       - payments
-  /api/payment/deletepayment/{payment_id}:
+  /payment/deletepayment/{payment_id}:
     delete:
       consumes:
       - application/json
@@ -895,7 +895,7 @@ paths:
       summary: Delete payment
       tags:
       - payments
-  /api/payment/getallpayment/{limit}/{page}:
+  /payment/getallpayment/{limit}/{page}:
     get:
       consumes:
       - application/json
@@ -927,7 +927,7 @@ paths:
       summary: Get all payments
       tags:
       - payments
-  /api/payment/getbyidpayment/{payment_id}:
+  /payment/getbyidpayment/{payment_id}:
     get:
       consumes:
       - application/json
@@ -954,7 +954,7 @@ paths:
       summary: Get payment by ID
       tags:
       - payments
-  /api/properties/propertiescreate:
+  /properties/propertiescreate:
     post:
       consumes:
       - application/json
@@ -986,7 +986,7 @@ paths:
       summary: Create a new house
       tags:
       - houses
-  /api/properties/propertiesdelete/{properties_id}:
+  /properties/propertiesdelete/{properties_id}:
     delete:
       consumes:
       - application/json
@@ -1013,7 +1013,7 @@ paths:
       summary: Delete a house
       tags:
       - houses
-  /api/properties/propertiesgetall/{limit}/{page}:
+  /properties/propertiesgetall/{limit}/{page}:
     get:
       consumes:
       - application/json
@@ -1049,7 +1049,7 @@ paths:
       summary: Get all houses
       tags:
       - houses
-  /api/properties/propertiesgetbyid/{properties_id}:
+  /properties/propertiesgetbyid/{properties_id}:
     get:
       consumes:
       - application/json
@@ -1076,7 +1076,7 @@ paths:
       summary: Get house by ID
       tags:
       - houses
-  /api/properties/propertiesupdate:
+  /properties/propertiesupdate:
     put:
       consumes:
       - application/json
@@ -1108,7 +1108,7 @@ paths:
       summary: Update an existing house
       tags:
       - houses
-  /api/report/create:
+  /report/create:
     post:
       consumes:
       - application/json
@@ -1136,7 +1136,7 @@ paths:
       summary: Create a new report
       tags:
       - report
-  /api/report/delete/{id}:
+  /report/delete/{id}:
     delete:
       consumes:
       - application/json
@@ -1163,7 +1163,7 @@ paths:
       summary: Delete a report
       tags:
       - report
-  /api/report/get/{id}:
+  /report/get/{id}:
     get:
       consumes:
       - application/json
@@ -1190,7 +1190,7 @@ paths:
       summary: Get a report by ID
       tags:
       - report
-  /api/request/create:
+  /request/create:
     post:
       consumes:
       - application/json
@@ -1218,7 +1218,7 @@ paths:
       summary: Create a new request
       tags:
       - request
-  /api/request/delete/{id}:
+  /request/delete/{id}:
     delete:
       consumes:
       - application/json
@@ -1245,7 +1245,7 @@ paths:
       summary: Delete a request
       tags:
       - request
-  /api/request/getbyid/{id}:
+  /request/getbyid/{id}:
     get:
       consumes:
       - application/json
@@ -1272,7 +1272,7 @@ paths:
       summary: Get a request by ID
       tags:
       - request
-  /api/review/create:
+  /review/create:
     post:
       consumes:
       - application/json
@@ -1300,7 +1300,7 @@ paths:
       summary: Create a new review
       tags:
       - reviews
-  /api/review/delete/{id}:
+  /review/delete/{id}:
     delete:
       consumes:
       - application/json
@@ -1327,7 +1327,7 @@ paths:
       summary: Delete a review
       tags:
       - reviews
-  /api/review/getallreview:
+  /review/getallreview:
     get:
       consumes:
       - application/json
@@ -1359,7 +1359,7 @@ paths:
       summary: Get all reviews
       tags:
       - reviews
-  /api/review/getbyid/{id}:
+  /review/getbyid/{id}:
     get:
       consumes:
       - application/json
@@ -1386,7 +1386,7 @@ paths:
       summary: Get a review by ID
       tags:
       - reviews
-  /api/review/update/{id}:
+  /review/update/{id}:
     put:
       consumes:
       - application/json
@@ -1419,7 +1419,7 @@ paths:
       summary: Update an existing review
       tags:
       - reviews
-  /api/tarif/createtarif:
+  /tarif/createtarif:
     post:
       consumes:
       - application/json
@@ -1447,7 +1447,7 @@ paths:
       summary: Create a new tariff
       tags:
       - tariffs
-  /api/tarif/deletetarif/{tarif_id}:
+  /tarif/deletetarif/{tarif_id}:
     delete:
       consumes:
       - application/json
@@ -1474,7 +1474,7 @@ paths:
       summary: Delete tariff
       tags:
       - tariffs
-  /api/tarif/getalltarif/{limit}/{page}:
+  /tarif/getalltarif/{limit}/{page}:
     get:
       consumes:
       - application/json
@@ -1506,7 +1506,7 @@ paths:
       summary: Get all tariffs
       tags:
       - tariffs
-  /api/tarif/getbyidtarif/{tarif_id}:
+  /tarif/getbyidtarif/{tarif_id}:
     get:
       consumes:
       - application/json
@@ -1533,7 +1533,7 @@ paths:
       summary: Get tariff by ID
       tags:
       - tariffs
-  /api/tarif/updatetarif:
+  /tarif/updatetarif:
     put:
       consumes:
       - application/json
@@ -1561,7 +1561,7 @@ paths:
       summary: Update a tariff
       tags:
       - tariffs
-  /api/topproperties/createtopproperties:
+  /topproperties/createtopproperties:
     post:
       consumes:
       - application/json
@@ -1589,7 +1589,7 @@ paths:
       summary: Create top properties
       tags:
       - top_properties
-  /api/topproperties/deletetopproperties/{top_properties_id}:
+  /topproperties/deletetopproperties/{top_properties_id}:
     delete:
       consumes:
       - application/json
@@ -1616,7 +1616,7 @@ paths:
       summary: Delete top properties
       tags:
       - top_properties
-  /api/topproperties/getalltopproperties/{limit}/{page}:
+  /topproperties/getalltopproperties/{limit}/{page}:
     get:
       consumes:
       - application/json
@@ -1648,7 +1648,7 @@ paths:
       summary: Get all top properties
       tags:
       - top_properties
-  /api/topproperties/getbyidtopproperties/{top_properties_id}:
+  /topproperties/getbyidtopproperties/{top_properties_id}:
     get:
       consumes:
       - application/json
@@ -1675,7 +1675,7 @@ paths:
       summary: Get top properties by ID
       tags:
       - top_properties
-  /api/topproperties/updatetopproperties:
+  /topproperties/updatetopproperties:
     put:
       consumes:
       - application/json
@@ -1703,7 +1703,7 @@ paths:
       summary: Update top properties
       tags:
       - top_properties
-  /api/upload/imagesandvideo:
+  /upload/imagesandvideo:
     post:
       consumes:
       - multipart/form-data
@@ -1734,7 +1734,7 @@ paths:
       summary: Fayl yuklash
       tags:
       - Media
-  /api/user/password:
+  /user/password:
     put:
       description: Changes user password
       parameters:
@@ -1766,7 +1766,7 @@ paths:
       summary: Changes password
       tags:
       - user
-  /api/user/profile:
+  /user/profile:
     get:
       description: Retrieves user profile
       responses:
@@ -1787,7 +1787,7 @@ paths:
       summary: Gets profile
       tags:
       - user
-  /api/user/profile/delete:
+  /user/profile/delete:
     delete:
       description: Deletes user profile
       responses:
@@ -1808,7 +1808,7 @@ paths:
       summary: Deletes profile
       tags:
       - user
-  /api/user/profile/update:
+  /user/profile/update:
     put:
       description: Updates user profile
       parameters:

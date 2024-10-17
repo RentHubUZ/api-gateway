@@ -19,7 +19,7 @@ import (
 // @Param        body body payment.CreatePaymentReq true "Create Payment Request"
 // @Success      200 {object} payment.CreatePaymentRes
 // @Failure      400 {object} string
-// @Router       /api/payment/createpayment [post]
+// @Router       /payment/createpayment [post]
 func (h *Handler) CreatePayment(c *gin.Context) {
 	var paymentCreate pbpay.CreatePaymentReq
 	if err := c.ShouldBindJSON(&paymentCreate); err != nil {
@@ -50,7 +50,7 @@ func (h *Handler) CreatePayment(c *gin.Context) {
 // @Param        payment_id path string true "Payment ID"
 // @Success      200 {object} payment.GetPaymentRes
 // @Failure      400 {object} string
-// @Router       /api/payment/getbyidpayment/{payment_id} [get]
+// @Router       /payment/getbyidpayment/{payment_id} [get]
 func (h *Handler) GetPayment(c *gin.Context) {
 	id := c.Param("payment_id")
 
@@ -78,7 +78,7 @@ func (h *Handler) GetPayment(c *gin.Context) {
 // @Param        page  path int true "Page"
 // @Success      200 {object} payment.GetAllPaymentRes
 // @Failure      400 {object} string
-// @Router       /api/payment/getallpayment/{limit}/{page} [get]
+// @Router       /payment/getallpayment/{limit}/{page} [get]
 func (h *Handler) GetAllPaymet(c *gin.Context) {
 	limitStr := c.Param("limit")
 	limit, err := strconv.Atoi(limitStr)
@@ -122,7 +122,7 @@ func (h *Handler) GetAllPaymet(c *gin.Context) {
 // @Param        payment_id path string true "Payment ID"
 // @Success      200 {object} payment.DeletePaymentRes
 // @Failure      400 {object} string
-// @Router       /api/payment/deletepayment/{payment_id} [delete]
+// @Router       /payment/deletepayment/{payment_id} [delete]
 func (h *Handler) DeletePayment(c *gin.Context) {
 	id := c.Param("payment_id")
 
