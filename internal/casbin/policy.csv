@@ -1,50 +1,50 @@
-p, user, /api/user/*, GET
-p, user, /api/user/*, PUT
-p, user, /api/user/*, DELETE
-p, user, /api/user/*, POST
+p, user, /user/*, GET
+p, user, /user/*, PUT
+p, user, /user/*, DELETE
+p, user, /user/*, POST
 
-p, user, /api/properties/*, POST
-p, user, /api/properties/*, PUT
-p, user, /api/properties/*, GET
-p, user, /api/properties/*, GET
-p, user, /api/properties/*, DELETE
+p, user, /properties/*, POST
+p, user, /properties/*, PUT
+p, user, /properties/*, GET
+p, user, /properties/*, GET
+p, user, /properties/*, DELETE
 
-p, user, /api/payment/*, POST
-p, user, /api/payment/*, GET
-p, user, /api/payment/*, GET
-p, user, /api/payment/*, DELETE
+p, user, /payment/*, POST
+p, user, /payment/*, GET
+p, user, /payment/*, GET
+p, user, /payment/*, DELETE
 
-p, user, /api/tarif/*, POST
-p, user, /api/tarif/*, PUT
-p, user, /api/tarif/*, GET
-p, user, /api/tarif/*, GET
-p, user, /api/tarif/*, DELETE
+p, user, /tarif/*, POST
+p, user, /tarif/*, PUT
+p, user, /tarif/*, GET
+p, user, /tarif/*, GET
+p, user, /tarif/*, DELETE
 
-p, user, /api/topproperties/*, POST
-p, user, /api/topproperties/*, PUT
-p, user, /api/topproperties/*, GET
-p, user, /api/topproperties/*, GET
-p, user, /api/topproperties/*, DELETE
+p, user, /topproperties/*, POST
+p, user, /topproperties/*, PUT
+p, user, /topproperties/*, GET
+p, user, /topproperties/*, GET
+p, user, /topproperties/*, DELETE
 
-p, user, /api/review/*, POST
-p, user, /api/review/*, GET
-p, user, /api/review/*, GET
-p, user, /api/review/*, DELETE
+p, user, /review/*, POST
+p, user, /review/*, GET
+p, user, /review/*, GET
+p, user, /review/*, DELETE
 
-p, user, /api/favorites/*, POST
-p, user, /api/favorites/*, GET
-p, user, /api/favorites/*, GET
-p, user, /api/favorites/*, DELETE
+p, user, /favorites/*, POST
+p, user, /favorites/*, GET
+p, user, /favorites/*, GET
+p, user, /favorites/*, DELETE
 
-p, user, /api/request/*, POST
-p, user, /api/request/*, GET
-p, user, /api/request/*, DELETE
+p, user, /request/*, POST
+p, user, /request/*, GET
+p, user, /request/*, DELETE
 
-p, user, /api/report/*, POST
-p, user, /api/report/*, GET
-p, user, /api/report/*, DELETE
+p, user, /report/*, POST
+p, user, /report/*, GET
+p, user, /report/*, DELETE
 
-p, user, /api/notification/*, POST
-p, user, /api/notification/*, GET
+p, user, /notification/*, POST
+p, user, /notification/*, GET
 
-p, user, /api/upload/*, POST
+p, user, /upload/*, POST
