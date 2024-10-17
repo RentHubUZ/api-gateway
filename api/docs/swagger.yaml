@@ -1746,19 +1746,19 @@ paths:
           $ref: '#/definitions/models.ChangePassword'
       responses:
         "200":
-          description: Password changed successfully
+          description: OK
           schema:
             type: string
         "400":
-          description: Invalid data format
+          description: Bad Request
           schema:
             type: string
         "401":
-          description: Invalid user
+          description: Unauthorized
           schema:
             type: string
         "500":
-          description: Server error while processing request
+          description: Internal Server Error
           schema:
             type: string
       security:
@@ -1775,11 +1775,11 @@ paths:
           schema:
             $ref: '#/definitions/user.Profile'
         "401":
-          description: Invalid user
+          description: Unauthorized
           schema:
             type: string
         "500":
-          description: Server error while processing request
+          description: Internal Server Error
           schema:
             type: string
       security:
@@ -1792,15 +1792,15 @@ paths:
       description: Deletes user profile
       responses:
         "200":
-          description: User deleted successfully
+          description: OK
           schema:
             type: string
         "401":
-          description: Invalid user
+          description: Unauthorized
           schema:
             type: string
         "500":
-          description: Server error while processing request
+          description: Internal Server Error
           schema:
             type: string
       security:
@@ -1820,19 +1820,19 @@ paths:
           $ref: '#/definitions/models.UserUpdate'
       responses:
         "200":
-          description: User updated successfully
+          description: OK
           schema:
             type: string
         "400":
-          description: Invalid data format
+          description: Bad Request
           schema:
             type: string
         "401":
-          description: Invalid user
+          description: Unauthorized
           schema:
             type: string
         "500":
-          description: Server error while processing request
+          description: Internal Server Error
           schema:
             type: string
       security:

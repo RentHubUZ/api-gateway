@@ -15,8 +15,8 @@ import (
 // @Tags user
 // @Security ApiKeyAuth
 // @Success 200 {object} user.Profile
-// @Failure 401 {object} string "Invalid user"
-// @Failure 500 {object} string "Server error while processing request"
+// @Failure 401 {object} string 
+// @Failure 500 {object} string 
 // @Router /api/user/profile [get]
 func (h *Handler) GetProfile(c *gin.Context) {
 	h.Log.Info("GetProfile handler is invoked")
@@ -44,10 +44,10 @@ func (h *Handler) GetProfile(c *gin.Context) {
 // @Tags user
 // @Security ApiKeyAuth
 // @Param data body models.UserUpdate true "New user data"
-// @Success 200 {object} string "User updated successfully"
-// @Failure 400 {object} string "Invalid data format"
-// @Failure 401 {object} string "Invalid user"
-// @Failure 500 {object} string "Server error while processing request"
+// @Success 200 {object} string 
+// @Failure 400 {object} string 
+// @Failure 401 {object} string 
+// @Failure 500 {object} string 
 // @Router /api/user/profile/update [put]
 func (h *Handler) UpdateProfile(c *gin.Context) {
 	h.Log.Info("UpdateProfile handler is invoked")
@@ -86,9 +86,9 @@ func (h *Handler) UpdateProfile(c *gin.Context) {
 // @Description Deletes user profile
 // @Tags user
 // @Security ApiKeyAuth
-// @Success 200 {object} string "User deleted successfully"
-// @Failure 401 {object} string "Invalid user"
-// @Failure 500 {object} string "Server error while processing request"
+// @Success 200 {object} string
+// @Failure 401 {object} string 
+// @Failure 500 {object} string 
 // @Router /api/user/profile/delete [delete]
 func (h *Handler) DeleteProfile(c *gin.Context) {
 	h.Log.Info("DeleteProfile handler is invoked")
@@ -116,10 +116,10 @@ func (h *Handler) DeleteProfile(c *gin.Context) {
 // @Tags user
 // @Security ApiKeyAuth
 // @Param data body models.ChangePassword true "Passwords"
-// @Success 200 {object} string "Password changed successfully"
-// @Failure 400 {object} string "Invalid data format"
-// @Failure 401 {object} string "Invalid user"
-// @Failure 500 {object} string "Server error while processing request"
+// @Success 200 {object} string 
+// @Failure 400 {object} string
+// @Failure 401 {object} string 
+// @Failure 500 {object} string 
 // @Router /api/user/password [put]
 func (h *Handler) ChangePassword(c *gin.Context) {
 	h.Log.Info("ChangePassword handler is invoked")

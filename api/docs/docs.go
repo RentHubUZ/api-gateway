@@ -1730,25 +1730,25 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Password changed successfully",
+                        "description": "OK",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "400": {
-                        "description": "Invalid data format",
+                        "description": "Bad Request",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "401": {
-                        "description": "Invalid user",
+                        "description": "Unauthorized",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Server error while processing request",
+                        "description": "Internal Server Error",
                         "schema": {
                             "type": "string"
                         }
@@ -1776,13 +1776,13 @@ const docTemplate = `{
                         }
                     },
                     "401": {
-                        "description": "Invalid user",
+                        "description": "Unauthorized",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Server error while processing request",
+                        "description": "Internal Server Error",
                         "schema": {
                             "type": "string"
                         }
@@ -1804,19 +1804,19 @@ const docTemplate = `{
                 "summary": "Deletes profile",
                 "responses": {
                     "200": {
-                        "description": "User deleted successfully",
+                        "description": "OK",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "401": {
-                        "description": "Invalid user",
+                        "description": "Unauthorized",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Server error while processing request",
+                        "description": "Internal Server Error",
                         "schema": {
                             "type": "string"
                         }
@@ -1849,25 +1849,25 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "User updated successfully",
+                        "description": "OK",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "400": {
-                        "description": "Invalid data format",
+                        "description": "Bad Request",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "401": {
-                        "description": "Invalid user",
+                        "description": "Unauthorized",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Server error while processing request",
+                        "description": "Internal Server Error",
                         "schema": {
                             "type": "string"
                         }
