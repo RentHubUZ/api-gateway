@@ -22,14 +22,14 @@ func (h *Handler) GetProfile(c *gin.Context) {
 
 	id, err := getUserID(c)
 	if err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
+		c.JSON(http.StatusUnauthorized, gin.H{"error1": err.Error()})
 		return
 	}
 
 	resp, err := h.UserService.GetProfile(c.Request.Context(), &pb.ID{Id: id})
 	if err != nil {
 		h.Log.Error("GetProfile error", "error", err.Error())
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"error2": err.Error()})
 		return
 	}
 
@@ -53,14 +53,14 @@ func (h *Handler) UpdateProfile(c *gin.Context) {
 
 	id, err := getUserID(c)
 	if err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
+		c.JSON(http.StatusUnauthorized, gin.H{"error1": err.Error()})
 		return
 	}
 
 	var req models.UserUpdate
 	if err := c.ShouldBind(&req); err != nil {
-		h.Log.Error("UpdateProfile binding error", "error", err.Error())
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		h.Log.Error("UpdateProfile binding error", "error2", err.Error())
+		c.JSON(http.StatusBadRequest, gin.H{"error2": err.Error()})
 		return
 	}
 
@@ -71,8 +71,8 @@ func (h *Handler) UpdateProfile(c *gin.Context) {
 		PhoneNumber: req.PhoneNumber,
 	})
 	if err != nil {
-		h.Log.Error("UpdateProfile error", "error", err.Error())
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		h.Log.Error("UpdateProfile error", "error3", err.Error())
+		c.JSON(http.StatusInternalServerError, gin.H{"error3": err.Error()})
 		return
 	}
 
@@ -94,14 +94,14 @@ func (h *Handler) DeleteProfile(c *gin.Context) {
 
 	id, err := getUserID(c)
 	if err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
+		c.JSON(http.StatusUnauthorized, gin.H{"error1": err.Error()})
 		return
 	}
 
 	_, err = h.UserService.DeleteProfile(c.Request.Context(), &pb.ID{Id: id})
 	if err != nil {
-		h.Log.Error("DeleteProfile error", "error", err.Error())
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		h.Log.Error("DeleteProfile error", "error2", err.Error())
+		c.JSON(http.StatusInternalServerError, gin.H{"error2": err.Error()})
 		return
 	}
 
@@ -125,14 +125,14 @@ func (h *Handler) ChangePassword(c *gin.Context) {
 
 	id, err := getUserID(c)
 	if err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
+		c.JSON(http.StatusUnauthorized, gin.H{"error1": err.Error()})
 		return
 	}
 
 	var req models.ChangePassword
 	if err := c.ShouldBind(&req); err != nil {
-		h.Log.Error("ChangePassword binding error", "error", err.Error())
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		h.Log.Error("ChangePassword binding error", "error2", err.Error())
+		c.JSON(http.StatusBadRequest, gin.H{"error2": err.Error()})
 		return
 	}
 
@@ -142,7 +142,7 @@ func (h *Handler) ChangePassword(c *gin.Context) {
 		NewPassword: req.NewPassword,
 	})
 	if err != nil {
-		h.Log.Error("ChangePassword error", "error", err.Error())
+		h.Log.Error("ChangePassword error", "error3", err.Error())
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
