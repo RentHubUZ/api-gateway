@@ -3,7 +3,6 @@ package handler
 import (
 	pb "api_gateway/genproto/user"
 	"api_gateway/internal/models"
-	"context"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -15,8 +14,8 @@ import (
 // @Tags user
 // @Security ApiKeyAuth
 // @Success 200 {object} user.Profile
-// @Failure 401 {object} string 
-// @Failure 500 {object} string 
+// @Failure 401 {object} string
+// @Failure 500 {object} string
 // @Router /api/user/profile [get]
 func (h *Handler) GetProfile(c *gin.Context) {
 	h.Log.Info("GetProfile handler is invoked")
@@ -27,14 +26,14 @@ func (h *Handler) GetProfile(c *gin.Context) {
 		return
 	}
 
-	resp, err := h.UserService.GetProfile(context.Background(), &pb.ID{Id: id})
+	resp, err := h.UserService.GetProfile(c.Request.Context(), &pb.ID{Id: id})
 	if err != nil {
-		h.Log.Error("error","",err.Error())
+		h.Log.Error("GetProfile error", "error", err.Error())
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	h.Log.Info("GetProfile handler is completed","resp",resp)
+	h.Log.Info("GetProfile handler completed", "response", resp)
 	c.JSON(http.StatusOK, resp)
 }
 
@@ -44,10 +43,10 @@ func (h *Handler) GetProfile(c *gin.Context) {
 // @Tags user
 // @Security ApiKeyAuth
 // @Param data body models.UserUpdate true "New user data"
-// @Success 200 {object} string 
-// @Failure 400 {object} string 
-// @Failure 401 {object} string 
-// @Failure 500 {object} string 
+// @Success 200 {object} string
+// @Failure 400 {object} string
+// @Failure 401 {object} string
+// @Failure 500 {object} string
 // @Router /api/user/profile/update [put]
 func (h *Handler) UpdateProfile(c *gin.Context) {
 	h.Log.Info("UpdateProfile handler is invoked")
@@ -60,24 +59,24 @@ func (h *Handler) UpdateProfile(c *gin.Context) {
 
 	var req models.UserUpdate
 	if err := c.ShouldBind(&req); err != nil {
-		h.Log.Error("error","",err.Error())
+		h.Log.Error("UpdateProfile binding error", "error", err.Error())
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	_, err = h.UserService.UpdateProfile(c, &pb.NewData{
+	_, err = h.UserService.UpdateProfile(c.Request.Context(), &pb.NewData{
 		Id:          id,
 		FullName:    req.FullName,
 		Email:       req.Email,
 		PhoneNumber: req.PhoneNumber,
 	})
 	if err != nil {
-		h.Log.Error("error","",err.Error())
+		h.Log.Error("UpdateProfile error", "error", err.Error())
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	h.Log.Info("UpdateProfile handler is completed")
+	h.Log.Info("UpdateProfile handler completed")
 	c.JSON(http.StatusOK, "User updated successfully")
 }
 
@@ -87,8 +86,8 @@ func (h *Handler) UpdateProfile(c *gin.Context) {
 // @Tags user
 // @Security ApiKeyAuth
 // @Success 200 {object} string
-// @Failure 401 {object} string 
-// @Failure 500 {object} string 
+// @Failure 401 {object} string
+// @Failure 500 {object} string
 // @Router /api/user/profile/delete [delete]
 func (h *Handler) DeleteProfile(c *gin.Context) {
 	h.Log.Info("DeleteProfile handler is invoked")
@@ -99,14 +98,14 @@ func (h *Handler) DeleteProfile(c *gin.Context) {
 		return
 	}
 
-	_, err = h.UserService.DeleteProfile(c, &pb.ID{Id: id})
+	_, err = h.UserService.DeleteProfile(c.Request.Context(), &pb.ID{Id: id})
 	if err != nil {
-		h.Log.Error("error","",err.Error())
+		h.Log.Error("DeleteProfile error", "error", err.Error())
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	h.Log.Info("DeleteProfile handler is completed")
+	h.Log.Info("DeleteProfile handler completed")
 	c.JSON(http.StatusOK, "User deleted successfully")
 }
 
@@ -116,10 +115,10 @@ func (h *Handler) DeleteProfile(c *gin.Context) {
 // @Tags user
 // @Security ApiKeyAuth
 // @Param data body models.ChangePassword true "Passwords"
-// @Success 200 {object} string 
+// @Success 200 {object} string
 // @Failure 400 {object} string
-// @Failure 401 {object} string 
-// @Failure 500 {object} string 
+// @Failure 401 {object} string
+// @Failure 500 {object} string
 // @Router /api/user/password [put]
 func (h *Handler) ChangePassword(c *gin.Context) {
 	h.Log.Info("ChangePassword handler is invoked")
@@ -132,22 +131,22 @@ func (h *Handler) ChangePassword(c *gin.Context) {
 
 	var req models.ChangePassword
 	if err := c.ShouldBind(&req); err != nil {
-		h.Log.Error("error","",err.Error())
+		h.Log.Error("ChangePassword binding error", "error", err.Error())
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	_, err = h.UserService.ChangePassword(c, &pb.NewPass{
+	_, err = h.UserService.ChangePassword(c.Request.Context(), &pb.NewPass{
 		Id:          id,
 		OldPassword: req.OldPassword,
 		NewPassword: req.NewPassword,
 	})
 	if err != nil {
-		h.Log.Error("error","",err.Error())
+		h.Log.Error("ChangePassword error", "error", err.Error())
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	h.Log.Info("ChangePassword handler is completed")
+	h.Log.Info("ChangePassword handler completed")
 	c.JSON(http.StatusOK, "Password changed successfully")
 }
