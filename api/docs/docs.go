@@ -1656,7 +1656,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/upload/imagesandvedio": {
+        "/api/upload/imagesandvideo": {
             "post": {
                 "security": [
                     {

@@ -45,8 +45,8 @@ func (c *controllerImpl) StartServer(cfg *config.Config) error {
 func (c *controllerImpl) SetupRoutes(h *handler.Handler, logger *slog.Logger, casbinEnforcer *casbin.Enforcer) {
 	c.Router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	c.Router.Use(middleware.CORSMiddleware())
-	c.Router.Use(middleware.PermissionMiddleware(casbinEnforcer))
 	router := c.Router.Group("/api")
+	c.Router.Use(middleware.PermissionMiddleware(casbinEnforcer))
 
 	properties := router.Group("/properties")
 	{
@@ -117,9 +117,9 @@ func (c *controllerImpl) SetupRoutes(h *handler.Handler, logger *slog.Logger, ca
 		notification.GET("/get/:id", h.GetNotification)
 	}
 
-	upload_images_vedio := router.Group("/upload")
+	UploadMedia := router.Group("/upload")
 	{
-		upload_images_vedio.POST("/imagesandvedio",h.UploadMedia)
+		UploadMedia.POST("/imagesandvideo",h.UploadMedia)
 	}
 	
 	user := router.Group("/user")

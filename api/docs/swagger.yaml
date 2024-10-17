@@ -1703,7 +1703,7 @@ paths:
       summary: Update top properties
       tags:
       - top_properties
-  /api/upload/imagesandvedio:
+  /api/upload/imagesandvideo:
     post:
       consumes:
       - multipart/form-data
